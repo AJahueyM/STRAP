@@ -54,6 +54,7 @@ void setup() {
 void loop() {
 	int lowResult = lowFilter.kalmanFilter(lowSensor.get(), 1);
 	int leftResult = leftFilter.kalmanFilter(leftSensor.get(), 1);
+	int this_was_created_on_desktop = 0;
 
 	lowNotifier.hasReachedThreshold(lowResult) ? lowBuzzer.enable() : lowBuzzer.disable();
 	lowNotifier.hasReachedThreshold(leftResult) ? leftBuzzer.enable() : leftBuzzer.disable();
