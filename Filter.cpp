@@ -3,7 +3,7 @@
 
 
 double Filter::kalmanFilter(double source, double deviation){
-	if (deviation > 0) {
+	if (deviation > 0.0) {
 		double kGain = previousVariance / (previousVariance + deviation);
 		double newEstimate = previousEstimate + kGain * (source - previousEstimate);
 		double newVariance = (1.0 - kGain) * previousVariance;
