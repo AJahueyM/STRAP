@@ -13,7 +13,7 @@ class Notifier
 {
 public:
 
-	void init (double threshold);
+	Notifier(double threshold);
 	/*
 		Use 'hasReachedThreshold' to know if the sensor has reached
 		the specified threshold
@@ -32,8 +32,6 @@ private:
 
 	
 };
-
-extern Notifier Notifier_;
 
 #endif
 

@@ -1,11 +1,13 @@
-// 
-// 
-// 
-
 #include "LV_EZ1.h"
 
+LV_EZ1::LV_EZ1(double analogPin) {
+	this->analogPin = analogPin;
+
+}
+
 double LV_EZ1::getDistance(){
-	double reading = (float) analogRead(analogPin);
+	double reading = (double) analogRead(analogPin);
+	delayMicroseconds(delayBetweenReadMs);
 	switch (currentUnit) {
 	case Units::cms:
 		return reading / conversionRateCms;
@@ -19,12 +21,4 @@ double LV_EZ1::getDistance(){
 void LV_EZ1::setUnits(Units choice){
 	currentUnit = choice;
 }
-
-void LV_EZ1::init(double analogPin){
-	this->analogPin = analogPin;
-
-}
-
-
-LV_EZ1 LV_EZ1_;
 

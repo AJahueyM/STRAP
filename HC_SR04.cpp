@@ -17,13 +17,13 @@ double HC_SR04::getDistance()
 	}
 }
 
-void HC_SR04::init(int pinTrigger)
+HC_SR04::HC_SR04(int pinTrigger)
 {
 	this->pinTrigger = pinTrigger;
 	this->pinEcho = ++pinTrigger;
 	InitializePinMode();
 }
-void HC_SR04::init(int pinTrigger, int pinEcho) {
+HC_SR04::HC_SR04(int pinTrigger, int pinEcho) {
 	this->pinTrigger = pinTrigger;
 	this->pinEcho = pinEcho;
 	InitializePinMode();
@@ -37,4 +37,3 @@ void HC_SR04::InitializePinMode() {
 	pinMode(this->pinTrigger, OUTPUT);
 	pinMode(this->pinEcho, INPUT);
 }
-HC_SR04 HC_SR04_;

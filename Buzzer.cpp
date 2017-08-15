@@ -4,7 +4,7 @@
 
 #include "Buzzer.h"
 
-void Buzzer::init(int buzzerPin){
+Buzzer::Buzzer(int buzzerPin){
 	pinMode(buzzerPin, OUTPUT);
 	this->buzzerPin = buzzerPin;
 }
@@ -17,6 +17,4 @@ void Buzzer::disable(){
 	digitalWrite(buzzerPin, LOW);
 }
 
-
-Buzzer Buzzer_;
 

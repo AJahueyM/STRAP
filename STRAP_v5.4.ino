@@ -28,27 +28,20 @@
 
 #define cmsThreshold 70
 
-LV_EZ1 lowSensor, leftSensor;
-//HC_SR04 rightSensor;
-Notifier lowNotifier, leftNotifier, rightNotifier;
-Buzzer lowBuzzer, leftBuzzer, rightBuzzer;
+LV_EZ1 lowSensor(lowAnalog),leftSensor(leftAnalog);
+
+HC_SR04 rightSensor(rightSensorTrigger, rightSensorEcho);
+Notifier lowNotifier(cmsThreshold), leftNotifier(cmsThreshold), rightNotifier(cmsThreshold);
+
+Buzzer lowBuzzer(lowBuzzerPin), leftBuzzer(leftBuzzerPin), rightBuzzer(rightBuzzerPin);
 Filter lowFilter, leftFilter, rightFilter;
 void setup() {
-	lowSensor.init(lowAnalog);
-	leftSensor.init(leftAnalog);
-	//rightSensor.init(rightSensorTrigger, rightSensorEcho);
-
-	lowNotifier.init( cmsThreshold);
-	leftNotifier.init(cmsThreshold);
-	//rightNotifier.init(&rightSensor, cmsThreshold);
 
 	lowNotifier.checkAboveThreshold(false);
 	leftNotifier.checkAboveThreshold(false);
-	//rightNotifier.checkAboveThreshold(false);
+	rightNotifier.checkAboveThreshold(false);
 
-	lowBuzzer.init(lowBuzzerPin);
-	leftBuzzer.init(leftBuzzerPin);
-	//rightBuzzer.init(rightBuzzerPin);
+
 }
 
 void loop() {

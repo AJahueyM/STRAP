@@ -22,8 +22,8 @@ public:
 		cms = 0,
 		in = 1
 	};
-	void init(int pinTrigger);
-	void init(int pinTrigger, int pinEcho);
+	HC_SR04(int pinTrigger);
+	HC_SR04(int pinTrigger, int pinEcho);
 	double getDistance();
 	void setUnits(Units option);
 private:
@@ -49,7 +49,5 @@ private:
 	int pinTrigger;
 	int pinEcho;
 };
-
-extern HC_SR04 HC_SR04_;
 
 #endif

@@ -12,15 +12,12 @@
 class Buzzer
 {
  public:
-	void init(int buzzerPin);
+	Buzzer(int buzzerPin);
 	void enable();
 	void disable();
 private:
 	int buzzerPin;
 
 };
-
-extern Buzzer Buzzer_;
-
 #endif
 

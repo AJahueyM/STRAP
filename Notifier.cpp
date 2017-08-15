@@ -1,7 +1,7 @@
 #include "Notifier.h"
 
 
-void Notifier::init(double threshold){
+Notifier::Notifier(double threshold){
 	this->threshold = threshold;
 }
 
@@ -17,4 +17,3 @@ void Notifier::checkAboveThreshold(bool choice){
 	checkAbove = choice;
 }
 
-Notifier Notifier_;
