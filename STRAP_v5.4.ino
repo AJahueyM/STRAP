@@ -2,8 +2,8 @@
 	Author: Alberto Jahuey Moncada 
 	Date Created: 8/1/2017
 
-	Version: 6.2
-	Last Updated: 8/8/2017
+	Version: 6.3
+	Last Updated: 15/8/2017
 */
 
 #include "LV_EZ1.h"
