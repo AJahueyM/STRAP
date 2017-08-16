@@ -6,7 +6,7 @@ Notifier* NotifierManager::notifiers[MAX_NOTIFIERS];
 Thread* NotifierManager::thread;
 
 NotifierManager::NotifierManager(int updateRate){
-	updateRate > 0 ? updateRate : updateRate = DEFAULT_UPDATE_RATE_MS;
+	updateRate < 0 ? updateRate = DEFAULT_UPDATE_RATE_MS : NULL;
 
 	thread = new Thread();
 	UpdateRateMs = updateRate;
