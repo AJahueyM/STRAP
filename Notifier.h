@@ -41,7 +41,7 @@ private:
 	Toggle* toggle;
 	Sensor* source;
 
-	double value;
+	double value = 0;
 	double threshold;
 	double deviationTolerance = 2;
 	bool checkAbove = true;

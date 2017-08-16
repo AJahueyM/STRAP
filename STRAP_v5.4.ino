@@ -16,12 +16,17 @@
 
 LV_EZ1 lowSensor(lowAnalog),leftSensor(leftAnalog);
 HC_SR04 rightSensor(rightSensorTrigger, rightSensorEcho);
-Notifier lowNotifier(&lowSensor, cmsThreshold), leftNotifier(&leftSensor, cmsThreshold), rightNotifier(&rightSensor, cmsThreshold);
 
 Buzzer lowBuzzer(lowBuzzerPin), leftBuzzer(leftBuzzerPin), rightBuzzer(rightBuzzerPin);
 Filter lowFilter, leftFilter, rightFilter;
+Notifier	lowNotifier(&lowSensor, cmsThreshold, &lowBuzzer),
+			leftNotifier(&leftSensor, cmsThreshold, &leftBuzzer), 
+			rightNotifier(&rightSensor, cmsThreshold, &rightBuzzer);
+
+
 
 void setup() {
+	Serial.begin(9600);
 	lowNotifier.checkAboveThreshold(false);
 	leftNotifier.checkAboveThreshold(false);
 	rightNotifier.checkAboveThreshold(false);
@@ -34,5 +39,7 @@ void setup() {
 }
 
 void loop() {
+	//leftNotifier.hasReachedThreshold();
+	//Serial.println(leftSensor.getDistance());
 
 }
