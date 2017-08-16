@@ -10,10 +10,12 @@ Buzzer::Buzzer(int buzzerPin){
 }
 
 void Buzzer::enable(){
+	setState(true);
 	digitalWrite(buzzerPin, HIGH);
 }
 
 void Buzzer::disable(){
+	setState(false);
 	digitalWrite(buzzerPin, LOW);
 }
 

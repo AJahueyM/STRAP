@@ -8,8 +8,9 @@
 #else
 	#include "WProgram.h"
 #endif
+#include "Toggle.h"
 
-class Buzzer
+class Buzzer : public Toggle
 {
  public:
 	Buzzer(int buzzerPin);
