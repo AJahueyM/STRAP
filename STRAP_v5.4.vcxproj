@@ -88,6 +88,7 @@
     <ClInclude Include="DistanceSensor.h" />
     <ClInclude Include="Filter.h" />
     <ClInclude Include="HC_SR04.h" />
+    <ClInclude Include="Defines.h" />
     <ClInclude Include="LV_EZ1.h" />
     <ClInclude Include="Notifier.h" />
     <ClInclude Include="NotifierManager.h" />

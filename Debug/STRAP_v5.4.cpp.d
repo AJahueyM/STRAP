@@ -18,6 +18,9 @@ C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Debug\STRAP_v5.
  C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Debug\Sensor.h \
  C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Debug\HC_SR04.h \
  C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Debug\Buzzer.h \
+ C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Debug\Toggle.h \
  C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Debug\Notifier.h \
  C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Debug\Filter.h \
+ C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Debug\NotifierManager.h \
+ C:\Users\Alberto\Documents\Arduino\libraries\ArduinoThread-master/Thread.h \
  C:\Program\ Files\ (x86)\Microsoft\ Visual\ Studio\2017\Community\Common7\IDE\Extensions\iznu5qi1.uuf\Micro\ Platforms\default\debuggers\VM_DBG/VM_DBG.h

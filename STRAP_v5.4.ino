@@ -12,22 +12,7 @@
 #include "Notifier.h"
 #include "NotifierManager.h"
 #include "Filter.h"
-
-#define lowSensorTrigger 4
-#define lowSensorEcho  5
-#define rightSensorTrigger  14
-#define rightSensorEcho 15
-#define leftSensorTrigger 2
-#define leftSensorEcho 3
-
-#define leftAnalog 0
-#define lowAnalog 1
-
-#define leftBuzzerPin 7
-#define rightBuzzerPin 6
-#define lowBuzzerPin 5
-
-#define cmsThreshold 70
+#include "Defines.h"
 
 LV_EZ1 lowSensor(lowAnalog),leftSensor(leftAnalog);
 HC_SR04 rightSensor(rightSensorTrigger, rightSensorEcho);
