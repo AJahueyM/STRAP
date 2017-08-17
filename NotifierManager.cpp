@@ -1,21 +1,27 @@
 #include "NotifierManager.h"
 
 int NotifierManager::usedNotifiers = 0;
-int NotifierManager::UpdateRateMs = DEFAULT_UPDATE_RATE_MS;
+int NotifierManager::UpdateRateMs;
 Notifier* NotifierManager::notifiers[MAX_NOTIFIERS];
-Task* NotifierManager::task;
+unsigned long NotifierManager::lastMillis;
 
 NotifierManager::NotifierManager(int updateRate){
 	updateRate < 0 ? updateRate = DEFAULT_UPDATE_RATE_MS : NULL;
-
-	task = new Task(updateRate, updateValues);
 	UpdateRateMs = updateRate;
+	lastMillis = millis();
 }
 
-void NotifierManager::updateValues(Task* task) {
+void NotifierManager::updateValues() {
 	for (int i = 0; i < usedNotifiers; i++) {
 		notifiers[i]->hasReachedThreshold();
 	}
+}
+
+bool NotifierManager::shouldUpdate(){
+	if (millis() - lastMillis  > UpdateRateMs)
+		return true;
+	
+	return false;
 }
 
 void NotifierManager::addNotifier(Notifier* notifier){
@@ -26,6 +32,5 @@ void NotifierManager::addNotifier(Notifier* notifier){
 }
 
 NotifierManager::~NotifierManager() {
-	delete task;
 	delete notifiers;
 }

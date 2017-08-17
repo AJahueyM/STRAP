@@ -3,7 +3,7 @@
 	Date Created: 8/1/2017
 
 	Version: 6.4
-	Last Updated: 16/8/2017
+	Last Updated: 17/8/2017
 */
 
 #include "LV_EZ1.h"
@@ -38,9 +38,8 @@ void setup() {
 
 }
 
-/*void loop() {
-	leftNotifier.hasReachedThreshold();
-	rightNotifier.hasReachedThreshold();
-	lowNotifier.hasReachedThreshold();
+void loop() {
+	if (manager.shouldUpdate)
+		manager.updateValues();
 
-}*/
+}
