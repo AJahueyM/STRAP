@@ -53,9 +53,10 @@ bool Notifier::hasReachedThreshold() {
 	}
 	if (value < threshold && !checkAbove) {
 		if (toggleAvailabe)
-			toggle->disable();
+			toggle->enable();
 		return true;
 	}
+	toggle->disable();
 	return false;
 }
 

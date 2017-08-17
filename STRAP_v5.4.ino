@@ -23,23 +23,24 @@ Notifier	lowNotifier(&lowSensor, cmsThreshold, &lowBuzzer),
 			leftNotifier(&leftSensor, cmsThreshold, &leftBuzzer), 
 			rightNotifier(&rightSensor, cmsThreshold, &rightBuzzer);
 
-
+NotifierManager& manager = NotifierManager::getInstance();
 
 void setup() {
 	Serial.begin(9600);
+
 	lowNotifier.checkAboveThreshold(false);
 	leftNotifier.checkAboveThreshold(false);
 	rightNotifier.checkAboveThreshold(false);
 
-	NotifierManager::Initialize();
-	NotifierManager::addNotifier(&lowNotifier);
-	NotifierManager::addNotifier(&leftNotifier);
-	NotifierManager::addNotifier(&rightNotifier);
+	manager.addNotifier(&lowNotifier);
+	manager.addNotifier(&leftNotifier);
+	manager.addNotifier(&rightNotifier);
 
 }
 
-void loop() {
-	//leftNotifier.hasReachedThreshold();
-	//Serial.println(leftSensor.getDistance());
+/*void loop() {
+	leftNotifier.hasReachedThreshold();
+	rightNotifier.hasReachedThreshold();
+	lowNotifier.hasReachedThreshold();
 
-}
+}*/

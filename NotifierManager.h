@@ -1,6 +1,6 @@
 #pragma once
 #include "Notifier.h"
-#include "Thread.h"
+#include <SoftTimer.h>
 
 #define MAX_NOTIFIERS 10
 #define DEFAULT_UPDATE_RATE_MS 100
@@ -14,12 +14,11 @@ private:
 	static Notifier* notifiers[MAX_NOTIFIERS];
 	static int usedNotifiers;
 	static int UpdateRateMs;
-	static void updateValues();
-	static Thread* thread;
+	static void updateValues(Task* task);
+	static Task* task;
 public:
 	static void addNotifier(Notifier* notifier);
-	static const NotifierManager& Initialize(const int updateRate = DEFAULT_UPDATE_RATE_MS)
-	{
+	static NotifierManager& getInstance(const int updateRate = DEFAULT_UPDATE_RATE_MS){
 		static NotifierManager singletonInstance(updateRate);
 		return singletonInstance;
 	}

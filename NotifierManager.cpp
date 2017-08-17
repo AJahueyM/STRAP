@@ -3,20 +3,16 @@
 int NotifierManager::usedNotifiers = 0;
 int NotifierManager::UpdateRateMs = DEFAULT_UPDATE_RATE_MS;
 Notifier* NotifierManager::notifiers[MAX_NOTIFIERS];
-Thread* NotifierManager::thread;
+Task* NotifierManager::task;
 
 NotifierManager::NotifierManager(int updateRate){
 	updateRate < 0 ? updateRate = DEFAULT_UPDATE_RATE_MS : NULL;
 
-	thread = new Thread();
+	task = new Task(updateRate, updateValues);
 	UpdateRateMs = updateRate;
-
-	thread->onRun(updateValues);
-	thread->setInterval(updateRate);
-	thread->run();
 }
 
-void NotifierManager::updateValues() {
+void NotifierManager::updateValues(Task* task) {
 	for (int i = 0; i < usedNotifiers; i++) {
 		notifiers[i]->hasReachedThreshold();
 	}
@@ -29,8 +25,7 @@ void NotifierManager::addNotifier(Notifier* notifier){
 	}
 }
 
-NotifierManager::~NotifierManager(){
-	delete thread;
+NotifierManager::~NotifierManager() {
+	delete task;
 	delete notifiers;
 }
-
