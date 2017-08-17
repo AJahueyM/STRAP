@@ -18,8 +18,10 @@ void NotifierManager::updateValues() {
 }
 
 bool NotifierManager::shouldUpdate(){
-	if (millis() - lastMillis  > UpdateRateMs)
+	if (millis() - lastMillis > UpdateRateMs) {
+		lastMillis = millis();
 		return true;
+	}
 	
 	return false;
 }

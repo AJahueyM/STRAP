@@ -26,8 +26,6 @@ Notifier	lowNotifier(&lowSensor, cmsThreshold, &lowBuzzer),
 NotifierManager& manager = NotifierManager::getInstance();
 
 void setup() {
-	Serial.begin(9600);
-
 	lowNotifier.checkAboveThreshold(false);
 	leftNotifier.checkAboveThreshold(false);
 	rightNotifier.checkAboveThreshold(false);
