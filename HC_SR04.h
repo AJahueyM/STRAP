@@ -26,6 +26,7 @@ public:
 	HC_SR04(int pinTrigger, int pinEcho);
 	double getDistance();
 	void setUnits(Units option);
+
 private:
 	/*
 	10 us is the recommended delay between sending the trigger

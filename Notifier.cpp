@@ -1,6 +1,6 @@
 #include "Notifier.h"
 
-Notifier::Notifier(Sensor* source, double threshold) {
+Notifier::Notifier(Sensor* source, double threshold) : kFilter(&value, error_Measure, error_Measure, variance) {
 	this->threshold = threshold;
 	this->source = source;
 
@@ -10,7 +10,7 @@ Notifier::Notifier(Sensor* source, double threshold) {
 	}
 }
 
-Notifier::Notifier(Sensor* source, double threshold, Toggle* toggle) {
+Notifier::Notifier(Sensor* source, double threshold, Toggle* toggle) : kFilter(&value, error_Measure, error_Measure, variance) {
 	this->toggle = toggle;
 	this->source = source;
 	this->threshold = threshold;
@@ -23,14 +23,14 @@ Notifier::Notifier(Sensor* source, double threshold, Toggle* toggle) {
 	}
 }
 
-Notifier::Notifier(double& source, double threshold) {
+Notifier::Notifier(double& source, double threshold) : kFilter(&value, error_Measure, error_Measure, variance) {
 	this->threshold = threshold;
 	this->value = source;
 
 	setMode(Mode::variable);
 }
 
-Notifier::Notifier(double& source, double threshold, Toggle* toggle) {
+Notifier::Notifier(double& source, double threshold, Toggle* toggle) :kFilter(&value, error_Measure, error_Measure, variance) {
 	this->toggle = toggle;
 	this->value = source;
 	this->threshold = threshold;
@@ -45,6 +45,7 @@ bool Notifier::hasReachedThreshold() {
 	if (sensorAvailable) {
 		value = source->get();
 	}
+	value = kFilter.kalmanFilter();
 
 	if (value > threshold && checkAbove) {
 		if (toggleAvailabe)

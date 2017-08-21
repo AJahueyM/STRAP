@@ -9,6 +9,7 @@
 #include "Sensor.h"
 #include "Filter.h"
 #include "Toggle.h"
+#include "Filter.h"
 
 class Notifier
 {
@@ -23,7 +24,7 @@ public:
 	*/
 	bool hasReachedThreshold();
 	/*
-		Use to decide if Notifier returns true wheter the value read 
+		Use to decide if Notifier returns true wheter the value read
 		is higher or lower than the threshold. (Defaults to true)
 	*/
 	void checkAboveThreshold(bool choice);
@@ -32,7 +33,7 @@ public:
 		sensor = 0,
 		variable = 1
 	};
-	
+
 	void setMode(Mode choice);
 	~Notifier();
 
@@ -41,6 +42,10 @@ private:
 	Toggle* toggle;
 	Sensor* source;
 
+	double variance = .02;
+	double error_Measure = 25;
+
+	Filter kFilter;
 	double value = 0;
 	double threshold;
 	double deviationTolerance = 2;

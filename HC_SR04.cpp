@@ -2,9 +2,11 @@
 
 double HC_SR04::getDistance()
 {
+	digitalWrite(pinTrigger, LOW);
+	delayMicroseconds(2);
 	digitalWrite(pinTrigger, HIGH);
 	delayMicroseconds(pulseLength_microSec);
-	digitalWrite(pinEcho, LOW);
+	digitalWrite(pinTrigger, LOW);
 	double duration = pulseIn(pinEcho, HIGH);
 
 	switch (currentUnit) {

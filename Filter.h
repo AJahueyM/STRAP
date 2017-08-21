@@ -1,11 +1,17 @@
 #pragma once
+#include <math.h>
 class Filter
 {
 public:
-	double kalmanFilter(double source, double deviation);
-private:
-	double rawSource;
-	double previousEstimate = 0;
-	double previousVariance = 1;
-};
+	Filter(double* source, double errorMeasurement,double estUncertainty,double variance);
+	double kalmanFilter();
+	~Filter();
 
+private:
+	double* source;
+	double previousEst;
+	double errorMeasurement;
+	double estUncertainty;
+	double variance;
+	double errEstimate;
+};

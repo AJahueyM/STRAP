@@ -2,7 +2,7 @@
 #include "Notifier.h"
 
 #define MAX_NOTIFIERS 10
-#define DEFAULT_UPDATE_RATE_MS 100
+#define DEFAULT_UPDATE_RATE_MS 50
 
 class NotifierManager
 {

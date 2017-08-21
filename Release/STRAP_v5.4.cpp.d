@@ -22,5 +22,4 @@ C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Release\STRAP_v
  C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Release\Notifier.h \
  C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Release\Filter.h \
  C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Release\NotifierManager.h \
- C:\Users\Alberto\Documents\Arduino\libraries\ArduinoThread-master/Thread.h \
  C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Release\Defines.h
