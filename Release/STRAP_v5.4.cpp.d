@@ -16,7 +16,6 @@ C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Release\STRAP_v
  C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Release\LV_EZ1.h \
  C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Release\DistanceSensor.h \
  C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Release\Sensor.h \
- C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Release\HC_SR04.h \
  C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Release\Buzzer.h \
  C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Release\Toggle.h \
  C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP_v5.4\leonardo\Release\Notifier.h \

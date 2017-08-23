@@ -70,6 +70,5 @@ void Notifier::setMode(Mode choice){
 }
 
 Notifier::~Notifier(){
-	delete toggle;
 }
 

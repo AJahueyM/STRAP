@@ -1,5 +1,11 @@
 #include "Toggle.h"
 
+Toggle::Toggle(){
+}
+
+Toggle::~Toggle(){
+}
+
 void Toggle::enable(){
 }
 
