@@ -1,5 +1,5 @@
 /*
-	Author: Alberto Jahuey Moncada 
+	Author: Alberto Jahuey Moncada
 	Date Created: 8/1/2017
 
 	Version: 6.6
@@ -16,7 +16,7 @@ LV_EZ1 lowSensor(lowAnalog),leftSensor(leftAnalog);
 
 Buzzer lowBuzzer(lowBuzzerPin), leftBuzzer(leftBuzzerPin), rightBuzzer(rightBuzzerPin);
 Notifier	lowNotifier(&lowSensor, cmsThreshold, &lowBuzzer),
-			leftNotifier(&leftSensor, cmsThreshold, &leftBuzzer), 
+			leftNotifier(&leftSensor, cmsThreshold, &leftBuzzer),
 			rightNotifier(&leftSensor, cmsThreshold, &rightBuzzer);
 
 NotifierManager& manager = NotifierManager::getInstance();
