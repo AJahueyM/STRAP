@@ -1,7 +1,12 @@
 #include "DistanceSensor.h"
 
 
-double DistanceSensor::get()
-{
+DistanceSensor::DistanceSensor(){
+}
+
+DistanceSensor::~DistanceSensor(){
+}
+
+double DistanceSensor::get(){
 	return getDistance();
 }

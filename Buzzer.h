@@ -8,19 +8,17 @@
 #else
 	#include "WProgram.h"
 #endif
+#include "Toggle.h"
 
-class Buzzer
+class Buzzer : public Toggle
 {
  public:
-	void init(int buzzerPin);
+	Buzzer(int buzzerPin);
 	void enable();
 	void disable();
 private:
 	int buzzerPin;
 
 };
-
-extern Buzzer Buzzer_;
-
 #endif
 

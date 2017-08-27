@@ -4,7 +4,9 @@
 class DistanceSensor : public Sensor
 {
 public:
+	DistanceSensor();
+	virtual ~DistanceSensor();
 	virtual double getDistance() = 0;
-	double get();
+	virtual double get();
 };
 
