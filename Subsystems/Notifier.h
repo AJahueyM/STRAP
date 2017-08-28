@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Filter.h"
-#include "Sensor.h"
-#include "Toggle.h"
+#include "../Sensors/Sensor.h"
+#include "../Toggles/Toggle.h"
 
 class Notifier{
 public:

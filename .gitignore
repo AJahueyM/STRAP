@@ -1,12 +1,7 @@
-.vs
-_vs
-Debug
-Release
-LICENSE_ArduinoThread.txt
+.vs/
+__vm/
+Debug/
+Release/
+STRAP.sln
 STRAP.vcxproj
 STRAP.vcxproj.filters
-STRAP_v5.4.sln
-STRAP_5.4.vcxproj
-STRAP_v5.4.vcxproj.filters
-STRAP_v5.4.vcxproj.user
-

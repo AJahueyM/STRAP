@@ -6,10 +6,10 @@
 	Last Updated: 27/8/2017
 */
 
-#include "LV_EZ1.h"
-#include "Buzzer.h"
-#include "Notifier.h"
-#include "NotifierManager.h"
+#include "Sensors/LV_EZ1.h"
+#include "Toggles/Buzzer.h"
+#include "Subsystems/Notifier.h"
+#include "Subsystems/NotifierManager.h"
 #include "Defines.h"
 
 LV_EZ1 lowSensor(lowAnalog),leftSensor(leftAnalog);
