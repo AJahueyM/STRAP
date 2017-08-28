@@ -1,60 +1,65 @@
-#ifndef _NOTIFIER_h
-#define _NOTIFIER_h
-#if defined(ARDUINO) && ARDUINO >= 100
-	#include "Arduino.h"
-#else
-	#include "WProgram.h"
-#endif
+#pragma once
 
+#include "Filter.h"
 #include "Sensor.h"
-#include "Filter.h"
 #include "Toggle.h"
-#include "Filter.h"
 
-class Notifier
-{
+class Notifier{
 public:
-	Notifier(double& source, double threshold);
-	Notifier(double& source, double threshold, Toggle* toggle);
-	Notifier(Sensor* source, double threshold);
-	Notifier(Sensor* source, double threshold, Toggle* toggle);
+	enum thresholdMode {
+		singleThreshold,
+		range
+	};
+
+	Notifier(double threshold, double* source = nullptr);
+	thresholdMode getMode();
 	/*
 		Use 'hasReachedThreshold' to know if the sensor has reached
 		the specified threshold
 	*/
 	bool hasReachedThreshold();
+
 	/*
 		Use to decide if Notifier returns true wheter the value read
 		is higher or lower than the threshold. (Defaults to true)
 	*/
 	void checkAboveThreshold(bool choice);
+	void checkInsideRange(bool choice);
 
-	enum Mode {
-		sensor = 0,
-		variable = 1
-	};
+	void setRangeMode(double low, double high);
+	void setValueMode(double threshold);
 
-	void setMode(Mode choice);
+	void setSensor(Sensor* sensor);
+	void setToggle(Toggle* toggle);
+
+	Sensor& getSensor();
+	Toggle& getToggle();
+
 	~Notifier();
-
 private:
-	Mode currentMode;
-	Toggle* toggle;
-	Sensor* source;
+	thresholdMode currentMode = thresholdMode::singleThreshold;
+	bool hasReachedValue();
+	bool hasReachedRange();
 
 	double variance = .02;
 	double error_Measure = 25;
 
 	Filter kFilter;
-	double value = 0;
-	double threshold;
-	double deviationTolerance = 2;
-	bool checkAbove = true;
-	bool reachedThreshold = false;
-	bool toggleAvailabe = false;
-	bool sensorAvailable = false;
+	double valueSensor = 0;
 	
-};
+	double *value;
 
-#endif
+	double threshold;
+	bool checkAbove = true;
+	
+	double lowThreshold;
+	double highThreshold;
+	bool checkInside = true;
+
+
+	bool sensorAvailable = false;
+	bool toggleAvailable = false;
+	Sensor* sensor;
+	Toggle* toggle;
+};
 

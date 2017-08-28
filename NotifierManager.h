@@ -1,5 +1,6 @@
 #pragma once
 #include "Notifier.h"
+#include "Arduino.h"
 
 #define MAX_NOTIFIERS 10
 #define DEFAULT_UPDATE_RATE_MS 50

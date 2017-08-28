@@ -15,17 +15,25 @@
 LV_EZ1 lowSensor(lowAnalog),leftSensor(leftAnalog);
 
 Buzzer lowBuzzer(lowBuzzerPin), leftBuzzer(leftBuzzerPin), rightBuzzer(rightBuzzerPin);
-Notifier	lowNotifier(&lowSensor, cmsThreshold, &lowBuzzer),
-			leftNotifier(&leftSensor, cmsThreshold, &leftBuzzer),
-			rightNotifier(&leftSensor, cmsThreshold, &rightBuzzer);
+Notifier	lowNotifier(cmsThreshold),
+			leftNotifier(cmsThreshold),
+			rightNotifier(cmsThreshold);
 
 NotifierManager& manager = NotifierManager::getInstance();
 
 void setup() {
+
 	lowNotifier.checkAboveThreshold(false);
 	leftNotifier.checkAboveThreshold(false);
 	rightNotifier.checkAboveThreshold(false);
 
+	lowNotifier.setSensor(&lowSensor);
+	leftNotifier.setSensor(&leftSensor);
+	rightNotifier.setSensor(&leftSensor);
+
+	lowNotifier.setToggle(&lowBuzzer);
+	leftNotifier.setToggle(&leftBuzzer);
+	rightNotifier.setToggle(&rightBuzzer);
 
 	manager.addNotifier(&lowNotifier);
 	manager.addNotifier(&leftNotifier);

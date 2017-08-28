@@ -1,74 +1,110 @@
 #include "Notifier.h"
 
-Notifier::Notifier(Sensor* source, double threshold) : kFilter(&value, error_Measure, error_Measure, variance) {
-	this->threshold = threshold;
-	this->source = source;
 
-	if (this->source != NULL) {
-		sensorAvailable = true;
-		setMode(Mode::sensor);
+
+Notifier::Notifier( double threshold, double* source = nullptr) : kFilter(value, error_Measure, error_Measure, variance) {
+	this->threshold = threshold;
+	if (source) {
+		this->value = source;
+	}else{
+		this->value = &valueSensor;
 	}
+
 }
 
-Notifier::Notifier(Sensor* source, double threshold, Toggle* toggle) : kFilter(&value, error_Measure, error_Measure, variance) {
-	this->toggle = toggle;
-	this->source = source;
-	this->threshold = threshold;
-
-	if (this->toggle != NULL && this->source != NULL) {
-		toggleAvailabe = true;
-		sensorAvailable = true;
-
-		setMode(Mode::sensor);
-	}
-}
-
-Notifier::Notifier(double& source, double threshold) : kFilter(&value, error_Measure, error_Measure, variance) {
-	this->threshold = threshold;
-	this->value = source;
-
-	setMode(Mode::variable);
-}
-
-Notifier::Notifier(double& source, double threshold, Toggle* toggle) :kFilter(&value, error_Measure, error_Measure, variance) {
-	this->toggle = toggle;
-	this->value = source;
-	this->threshold = threshold;
-
-	if (this->toggle != NULL) 
-		toggleAvailabe = true;
-
-	setMode(Mode::variable);
+Notifier::thresholdMode Notifier::getMode(){
+	return currentMode;
 }
 
 bool Notifier::hasReachedThreshold() {
-	if (sensorAvailable) {
-		value = source->get();
-	}
-	value = kFilter.kalmanFilter();
+	if (sensorAvailable)
+		valueSensor = sensor->get();
 
-	if (value > threshold && checkAbove) {
-		if (toggleAvailabe)
+	*value = kFilter.kalmanFilter();
+	switch (currentMode){
+	case thresholdMode::singleThreshold:
+		return hasReachedValue();
+		break;
+	case thresholdMode::range:
+		return hasReachedRange();
+		break;
+	}
+}
+
+bool Notifier::hasReachedValue(){
+	if (*value > threshold && checkAbove) {
+		if (toggleAvailable)
 			toggle->enable();
 		return true;
 	}
-	if (value < threshold && !checkAbove) {
-		if (toggleAvailabe)
+	if (*value < threshold && !checkAbove) {
+		if (toggleAvailable)
 			toggle->enable();
 		return true;
 	}
-	toggle->disable();
+	if (toggleAvailable)
+		toggle->disable();
+	return false;
+}
+
+bool Notifier::hasReachedRange(){
+	if (checkInside) {
+		if (*value > lowThreshold && *value < highThreshold) {
+			if (toggleAvailable)
+				toggle->enable();
+			return true;
+		}
+	}else {
+		if (*value < lowThreshold || *value > highThreshold) {
+			if (toggleAvailable)
+				toggle->enable();
+			return true;
+		}
+	}
+	if (toggleAvailable)
+		toggle->disable();
 	return false;
 }
 
 void Notifier::checkAboveThreshold(bool choice){
 	checkAbove = choice;
 }
-
-void Notifier::setMode(Mode choice){
-	currentMode = choice;
+void Notifier::checkInsideRange(bool choice){
+	checkInside = choice;
 }
 
+void Notifier::setRangeMode(double low, double high){
+	lowThreshold = low;
+	highThreshold = high;
+	currentMode = thresholdMode::range;
+}
+void Notifier::setValueMode(double threshold){
+	this->threshold = threshold;
+	currentMode = thresholdMode::singleThreshold;
+}
+void Notifier::setSensor(Sensor * sensor){
+	if (sensor) {
+		value = &valueSensor;
+		sensorAvailable = true;
+		this->sensor = sensor;
+	}
+}
+void Notifier::setToggle(Toggle * toggle){
+	if (toggle) {
+		toggleAvailable = true;
+		this->toggle = toggle;
+	}
+}
+Sensor & Notifier::getSensor(){
+	if (sensorAvailable) {
+		return *sensor;
+	}
+}
+Toggle & Notifier::getToggle(){
+	if (toggleAvailable) {
+		return *toggle;
+	}
+}
 Notifier::~Notifier(){
-}
 
+}

@@ -18,9 +18,6 @@
     <ClInclude Include="__vm\.STRAP_v5.4.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Notifier.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Buzzer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -51,11 +48,11 @@
     <ClInclude Include="NotifierManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Notifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Notifier.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Buzzer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -78,6 +75,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="NotifierManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Notifier.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
