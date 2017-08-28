@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{FAB4E509-97B1-4EB7-8017-9EBF7ACC8270}</ProjectGuid>
+    <ProjectGuid>{C5F80730-F44F-4478-BDAE-6634EFC2CA88}</ProjectGuid>
     <RootNamespace>
     </RootNamespace>
     <ProjectName>STRAP</ProjectName>
@@ -51,7 +51,7 @@
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\..\Program Files (x86)\Arduino\libraries;$(ProjectDir)..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\libraries;$(ProjectDir)..\..\Arduino\libraries;$(ProjectDir)..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino;$(ProjectDir)..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\variants\leonardo;$(ProjectDir)..\STRAP;$(ProjectDir)..\..\..\..\..\Program Files (x86)\Arduino\hardware\tools\avr\avr\include\;$(ProjectDir)..\..\..\..\..\Program Files (x86)\Arduino\hardware\tools\avr\avr\include\avr\;$(ProjectDir)..\..\..\..\..\Program Files (x86)\Arduino\hardware\tools\avr\lib\gcc\avr\4.8.1\include;$(ProjectDir)..\..\..\..\..\Program Files (x86)\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.2\include;$(ProjectDir)..\..\..\..\..\Program Files (x86)\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ProjectDir)__vm\.STRAP.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
-      <PreprocessorDefinitions>__AVR_ATmega32u4__;__AVR_ATmega32U4__;_VMDEBUG=1;F_CPU=16000000L;ARDUINO=10802;ARDUINO_AVR_LEONARDO;ARDUINO_ARCH_AVR;USB_VID=0x2341;USB_PID=0x8036;__cplusplus=201103L;_VMICRO_INTELLISENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__AVR_ATmega32u4__;__AVR_ATmega32U4__;_VMDEBUG=1;F_CPU=16000000L;ARDUINO=10803;ARDUINO_AVR_LEONARDO;ARDUINO_ARCH_AVR;USB_VID=0x2341;USB_PID=0x8036;__cplusplus=201103L;_VMICRO_INTELLISENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -80,37 +80,30 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Buzzer.h">
+    <ClInclude Include="Defines.h">
       <FileType>CppCode</FileType>
     </ClInclude>
-    <ClInclude Include="DistanceSensor.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="Filter.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="HC_SR04.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="LV_EZ1.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="Notifier.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="Sensor.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
+    <ClInclude Include="Sensors\DistanceSensor.h" />
+    <ClInclude Include="Sensors\HC_SR04.h" />
+    <ClInclude Include="Sensors\LV_EZ1.h" />
+    <ClInclude Include="Sensors\Sensor.h" />
+    <ClInclude Include="Subsystems\Filter.h" />
+    <ClInclude Include="Subsystems\Notifier.h" />
+    <ClInclude Include="Subsystems\NotifierManager.h" />
+    <ClInclude Include="Toggles\Buzzer.h" />
+    <ClInclude Include="Toggles\Toggle.h" />
     <ClInclude Include="__vm\.STRAP.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Buzzer.cpp" />
-    <ClCompile Include="DistanceSensor.cpp" />
-    <ClCompile Include="Filter.cpp" />
-    <ClCompile Include="HC_SR04.cpp" />
-    <ClCompile Include="LV_EZ1.cpp" />
-    <ClCompile Include="Notifier.cpp" />
-    <ClCompile Include="Sensor.cpp" />
+    <ClCompile Include="Sensors\DistanceSensor.cpp" />
+    <ClCompile Include="Sensors\HC_SR04.cpp" />
+    <ClCompile Include="Sensors\LV_EZ1.cpp" />
+    <ClCompile Include="Sensors\Sensor.cpp" />
+    <ClCompile Include="Subsystems\Filter.cpp" />
+    <ClCompile Include="Subsystems\Notifier.cpp" />
+    <ClCompile Include="Subsystems\NotifierManager.cpp" />
+    <ClCompile Include="Toggles\Buzzer.cpp" />
+    <ClCompile Include="Toggles\Toggle.cpp" />
   </ItemGroup>
   <PropertyGroup>
     <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>

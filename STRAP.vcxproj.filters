@@ -21,48 +21,63 @@
     <ClInclude Include="__vm\.STRAP.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Buzzer.h">
+    <ClInclude Include="Defines.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DistanceSensor.h">
+    <ClInclude Include="Sensors\DistanceSensor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Filter.h">
+    <ClInclude Include="Sensors\HC_SR04.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HC_SR04.h">
+    <ClInclude Include="Sensors\LV_EZ1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LV_EZ1.h">
+    <ClInclude Include="Sensors\Sensor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Notifier.h">
+    <ClInclude Include="Subsystems\Filter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Sensor.h">
+    <ClInclude Include="Subsystems\Notifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Subsystems\NotifierManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Toggles\Buzzer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Toggles\Toggle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Buzzer.cpp">
+    <ClCompile Include="Sensors\DistanceSensor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DistanceSensor.cpp">
+    <ClCompile Include="Sensors\HC_SR04.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Filter.cpp">
+    <ClCompile Include="Sensors\LV_EZ1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HC_SR04.cpp">
+    <ClCompile Include="Sensors\Sensor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LV_EZ1.cpp">
+    <ClCompile Include="Subsystems\Filter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Notifier.cpp">
+    <ClCompile Include="Subsystems\Notifier.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Sensor.cpp">
+    <ClCompile Include="Subsystems\NotifierManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Toggles\Buzzer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Toggles\Toggle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

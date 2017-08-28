@@ -14,6 +14,7 @@
 #define _VSARDUINO_H_
 #define __AVR_ATmega32u4__
 #define __AVR_ATmega32U4__
+#define _VMDEBUG 1
 #define F_CPU 16000000L
 #define ARDUINO 10803
 #define ARDUINO_AVR_LEONARDO
@@ -78,6 +79,6 @@ typedef void *__builtin_va_list;
 #define pgm_read_float(address_short) float()
 #define pgm_read_ptr(address_short)   short()
 
-#include "STRAP_v5.4.ino"
+#include "STRAP.ino"
 #endif
 #endif

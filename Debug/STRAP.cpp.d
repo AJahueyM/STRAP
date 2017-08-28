@@ -13,11 +13,14 @@ C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP\leonardo\Debug\STRAP.cpp.o: \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/USBDesc.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/USBCore.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\variants\leonardo/pins_arduino.h \
- C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP\leonardo\Debug\LV_EZ1.h \
- C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP\leonardo\Debug\DistanceSensor.h \
- C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP\leonardo\Debug\Sensor.h \
- C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP\leonardo\Debug\HC_SR04.h \
- C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP\leonardo\Debug\Buzzer.h \
- C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP\leonardo\Debug\Notifier.h \
- C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP\leonardo\Debug\Filter.h \
+ C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP\leonardo\Debug\Sensors/LV_EZ1.h \
+ C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP\leonardo\Debug\Sensors/DistanceSensor.h \
+ C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP\leonardo\Debug\Sensors/Sensor.h \
+ C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP\leonardo\Debug\Toggles/Buzzer.h \
+ C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP\leonardo\Debug\Toggles/Toggle.h \
+ C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP\leonardo\Debug\Subsystems/Notifier.h \
+ C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP\leonardo\Debug\Subsystems/Filter.h \
+ C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP\leonardo\Debug\Subsystems/NotifierManager.h \
+ C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP\leonardo\Debug\Subsystems/Notifier.h \
+ C:\Users\Alberto\AppData\Local\Temp\VMBuilds\STRAP\leonardo\Debug\Defines.h \
  C:\Program\ Files\ (x86)\Microsoft\ Visual\ Studio\2017\Community\Common7\IDE\Extensions\iznu5qi1.uuf\Micro\ Platforms\default\debuggers\VM_DBG/VM_DBG.h
