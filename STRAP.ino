@@ -38,7 +38,6 @@ void setup() {
 	manager.addNotifier(&lowNotifier);
 	manager.addNotifier(&leftNotifier);
 	manager.addNotifier(&rightNotifier);
-	//test 2
 }
 
 void loop() {
