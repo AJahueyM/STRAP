@@ -2,14 +2,17 @@
 #include "Notifier.h"
 #include "Arduino.h"
 
-#define MAX_NOTIFIERS 10
-#define DEFAULT_UPDATE_RATE_MS 50
 
 class NotifierManager
 {
 private:
+	const int MAX_NOTIFIERS = 10;
+	const int DEFAULT_UPDATE_RATE_MS = 50;
+
 	NotifierManager(int updateRate);
 	~NotifierManager();
+	NotifierManager(const NotifierManager&);
+	NotifierManager& operator=(const NotifierManager&);
 
 	static Notifier* notifiers[MAX_NOTIFIERS];
 	static int usedNotifiers;
