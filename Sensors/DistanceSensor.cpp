@@ -5,3 +5,6 @@
 double DistanceSensor::get(){
 	return getDistance();
 }
+DistanceSensor::~DistanceSensor(){
+}
+

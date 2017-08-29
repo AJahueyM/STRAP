@@ -6,5 +6,6 @@ class DistanceSensor : public Sensor
 public:
 	virtual double getDistance() = 0;
 	virtual double get();
+	virtual ~DistanceSensor = 0;
 };
 
