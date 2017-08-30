@@ -1,6 +1,6 @@
 #include "Sensor.h"
 
-double Sensor::get(){
+double  Sensor::get() const {
 	return 0;
 }
 

@@ -26,18 +26,18 @@ void setup() {
 	lowNotifier.checkAboveThreshold(false);
 	leftNotifier.checkAboveThreshold(false);
 	rightNotifier.checkAboveThreshold(false);
+	
+	lowNotifier.setSensor(lowSensor);
+	leftNotifier.setSensor(leftSensor);
+	rightNotifier.setSensor(leftSensor);
 
-	lowNotifier.setSensor(&lowSensor);
-	leftNotifier.setSensor(&leftSensor);
-	rightNotifier.setSensor(&leftSensor);
+	lowNotifier.setToggle(lowBuzzer);
+	leftNotifier.setToggle(leftBuzzer);
+	rightNotifier.setToggle(rightBuzzer);
 
-	lowNotifier.setToggle(&lowBuzzer);
-	leftNotifier.setToggle(&leftBuzzer);
-	rightNotifier.setToggle(&rightBuzzer);
-
-	manager.addNotifier(&lowNotifier);
-	manager.addNotifier(&leftNotifier);
-	manager.addNotifier(&rightNotifier);
+	manager.addNotifier(lowNotifier);
+	manager.addNotifier(leftNotifier);
+	manager.addNotifier(rightNotifier);
 }
 
 void loop() {

@@ -5,7 +5,7 @@ LV_EZ1::LV_EZ1(double analogPin) {
 
 }
 
-double LV_EZ1::getDistance(){
+double LV_EZ1::getDistance() const{
 	double reading = (double) analogRead(analogPin);
 	delayMicroseconds(delayBetweenReadMs);
 	switch (currentUnit) {

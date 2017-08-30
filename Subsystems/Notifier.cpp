@@ -12,7 +12,7 @@ Notifier::Notifier( double threshold, double* source = nullptr) : kFilter(value,
 
 }
 
-Notifier::thresholdMode Notifier::getMode(){
+Notifier::thresholdMode Notifier::getMode() const{
 	return currentMode;
 }
 
@@ -82,25 +82,21 @@ void Notifier::setValueMode(double threshold){
 	this->threshold = threshold;
 	currentMode = thresholdMode::singleThreshold;
 }
-void Notifier::setSensor(Sensor * sensor){
-	if (sensor) {
+void Notifier::setSensor(const Sensor& sensor){
 		value = &valueSensor;
 		sensorAvailable = true;
-		this->sensor = sensor;
-	}
+		this->sensor = &sensor;
 }
-void Notifier::setToggle(Toggle * toggle){
-	if (toggle) {
+void Notifier::setToggle(Toggle& toggle){
 		toggleAvailable = true;
-		this->toggle = toggle;
-	}
+		this->toggle = &toggle;
 }
-Sensor & Notifier::getSensor(){
+const Sensor & Notifier::getSensor(){
 	if (sensorAvailable) {
 		return *sensor;
 	}
 }
-Toggle & Notifier::getToggle(){
+const Toggle & Notifier::getToggle(){
 	if (toggleAvailable) {
 		return *toggle;
 	}

@@ -2,7 +2,7 @@
 class Sensor
 {
 public:
-	virtual double get() = 0;
+	virtual double get() const = 0;
 	virtual ~Sensor() = 0;
 };
 

@@ -6,13 +6,13 @@ Toggle::Toggle(){
 Toggle::~Toggle(){
 }
 
-void Toggle::enable(){
+void Toggle::enable() {
 }
 
 void Toggle::disable(){
 }
 
-bool Toggle::getState(){
+bool Toggle::getState()const{
 	return state;
 }
 

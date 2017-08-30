@@ -12,7 +12,7 @@ public:
 	};
 
 	Notifier(double threshold, double* source = nullptr);
-	thresholdMode getMode();
+	 thresholdMode getMode() const;
 	/*
 		Use 'hasReachedThreshold' to know if the sensor has reached
 		the specified threshold
@@ -29,11 +29,11 @@ public:
 	void setRangeMode(double low, double high);
 	void setValueMode(double threshold);
 
-	void setSensor(Sensor* sensor);
-	void setToggle(Toggle* toggle);
+	void setSensor(const Sensor& sensor);
+	void setToggle(Toggle& toggle);
 
-	Sensor& getSensor();
-	Toggle& getToggle();
+	const Sensor& getSensor();
+	const Toggle& getToggle();
 
 	~Notifier();
 private:
@@ -59,7 +59,7 @@ private:
 
 	bool sensorAvailable = false;
 	bool toggleAvailable = false;
-	Sensor* sensor;
+	const Sensor* sensor;
 	Toggle* toggle;
 };
 

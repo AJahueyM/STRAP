@@ -9,7 +9,7 @@ public:
 	virtual ~Toggle();
 	virtual void enable() = 0;
 	virtual void disable() = 0;
-	virtual bool getState();
+	virtual bool getState() const;
 	virtual void setState(bool state);
 };
 
