@@ -2,8 +2,8 @@
 	Author: Alberto Jahuey Moncada
 	Date Created: 1/8/2017
 
-	Version: 6.8
-	Last Updated: 28/8/2017
+	Version: 6.9
+	Last Updated: 30/8/2017
 */
 
 #include "Sensors/LV_EZ1.h"
