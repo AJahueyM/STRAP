@@ -11,8 +11,7 @@
 #include "Subsystems/Notifier.h"
 #include "Subsystems/NotifierManager.h"
 #include "Defines.h"
-
-
+//HIIIIII KAREN
 
 LV_EZ1 lowSensor(lowAnalog),leftSensor(leftAnalog);
 
