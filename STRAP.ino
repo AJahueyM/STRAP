@@ -11,6 +11,7 @@
 #include "Subsystems/Notifier.h"
 #include "Subsystems/NotifierManager.h"
 #include "Defines.h"
+//Hiii
 
 LV_EZ1 lowSensor(lowAnalog),leftSensor(leftAnalog);
 
@@ -26,7 +27,7 @@ void setup() {
 	lowNotifier.checkAboveThreshold(false);
 	leftNotifier.checkAboveThreshold(false);
 	rightNotifier.checkAboveThreshold(false);
-	
+
 	lowNotifier.setSensor(lowSensor);
 	leftNotifier.setSensor(leftSensor);
 	rightNotifier.setSensor(leftSensor);
