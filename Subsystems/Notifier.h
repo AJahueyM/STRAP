@@ -41,7 +41,7 @@ private:
 	bool hasReachedValue();
 	bool hasReachedRange();
 
-	double variance = .02;
+	double variance = .001;
 	double error_Measure = 25;
 
 	Filter kFilter;

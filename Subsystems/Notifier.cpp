@@ -20,7 +20,7 @@ bool Notifier::hasReachedThreshold() {
 	if (sensorAvailable)
 		valueSensor = sensor->get();
 
-	*value = kFilter.kalmanFilter();
+	//*value = kFilter.kalmanFilter();
 	switch (currentMode){
 	case thresholdMode::singleThreshold:
 		return hasReachedValue();

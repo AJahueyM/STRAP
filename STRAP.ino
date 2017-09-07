@@ -12,35 +12,37 @@
 #include "Subsystems/NotifierManager.h"
 #include "Defines.h"
 
-LV_EZ1 lowSensor(lowAnalog),leftSensor(leftAnalog);
+LV_EZ1 lowSensor(lowAnalog),leftSensor(leftAnalog), centerSensor(centerAnalog);
 
-Buzzer lowBuzzer(lowBuzzerPin), leftBuzzer(leftBuzzerPin), rightBuzzer(rightBuzzerPin);
+Buzzer lowBuzzer(lowBuzzerPin), leftBuzzer(leftBuzzerPin), centerBuzzer(centerBuzzerPin);
 Notifier	lowNotifier(cmsThreshold),
 			leftNotifier(cmsThreshold),
-			rightNotifier(cmsThreshold);
+			centerNotifier(cmsThreshold);
 
 NotifierManager& manager = NotifierManager::getInstance();
 
 void setup() {
+	Serial.begin(9600);
 
 	lowNotifier.checkAboveThreshold(false);
 	leftNotifier.checkAboveThreshold(false);
-	rightNotifier.checkAboveThreshold(false);
-	
+	centerNotifier.checkAboveThreshold(false);
+
 	lowNotifier.setSensor(lowSensor);
 	leftNotifier.setSensor(leftSensor);
-	rightNotifier.setSensor(leftSensor);
+	centerNotifier.setSensor(centerSensor);
 
 	lowNotifier.setToggle(lowBuzzer);
 	leftNotifier.setToggle(leftBuzzer);
-	rightNotifier.setToggle(rightBuzzer);
+	centerNotifier.setToggle(centerBuzzer);
 
 	manager.addNotifier(lowNotifier);
 	manager.addNotifier(leftNotifier);
-	manager.addNotifier(rightNotifier);
+	manager.addNotifier(centerNotifier);
 }
 
 void loop() {
 	if (manager.shouldUpdate())
 		manager.updateValues();
+	Serial.println(lowSensor.getDistance());
 }
