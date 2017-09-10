@@ -41,8 +41,8 @@ private:
 	bool hasReachedValue();
 	bool hasReachedRange();
 
-	double variance = .001;
-	double error_Measure = 25;
+	double variance = .35;
+	double error_Measure = 20;
 
 	Filter kFilter;
 	double valueSensor = 0;
