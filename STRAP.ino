@@ -35,7 +35,8 @@ void setup() {
 }
 
 void loop() {
-	if (manager.shouldUpdate())
-		manager.updateValues();
+	//if (manager.shouldUpdate())
+	//	manager.updateValues();
+	Serial.println(centerSensor.getDistance());
 
 }
