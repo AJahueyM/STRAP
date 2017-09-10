@@ -13,28 +13,29 @@
 #include "Defines.h"
 
 
-LV_EZ1 lowSensor(lowAnalog),leftSensor(leftAnalog);
+LV_EZ1 lowSensor(lowAnalog),leftSensor(leftAnalog), centerSensor(centerAnalog);
 
-Buzzer lowBuzzer(lowBuzzerPin), leftBuzzer(leftBuzzerPin), rightBuzzer(rightBuzzerPin);
-Notifier	lowNotifier(&lowSensor, cmsThreshold, &lowBuzzer),
+Buzzer lowBuzzer(lowBuzzerPin), leftBuzzer(leftBuzzerPin), centerBuzzer(centerBuzzerPin);
+Notifier	lowNotifier(&lowSensor, cmsThresholdLow, &lowBuzzer),
 			leftNotifier(&leftSensor, cmsThreshold, &leftBuzzer),
-			rightNotifier(&leftSensor, cmsThreshold, &rightBuzzer);
+			centerNotifier(&centerSensor, cmsThreshold, &centerBuzzer);
 
 NotifierManager& manager = NotifierManager::getInstance();
 
 void setup() {
 	lowNotifier.checkAboveThreshold(false);
 	leftNotifier.checkAboveThreshold(false);
-	rightNotifier.checkAboveThreshold(false);
+	centerNotifier.checkAboveThreshold(false);
 
 
 	manager.addNotifier(&lowNotifier);
 	manager.addNotifier(&leftNotifier);
-	manager.addNotifier(&rightNotifier);
+	manager.addNotifier(&centerNotifier);
 
 }
 
 void loop() {
 	if (manager.shouldUpdate())
 		manager.updateValues();
+	
 }

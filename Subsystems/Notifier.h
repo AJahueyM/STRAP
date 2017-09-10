@@ -42,8 +42,8 @@ private:
 	Toggle* toggle;
 	Sensor* source;
 
-	double variance = .02;
-	double error_Measure = 25;
+	double variance = .35;
+	double error_Measure = 20;
 
 	Filter kFilter;
 	double value = 0;
