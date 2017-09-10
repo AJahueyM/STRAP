@@ -37,5 +37,5 @@ void setup() {
 void loop() {
 	if (manager.shouldUpdate())
 		manager.updateValues();
-	
+
 }
