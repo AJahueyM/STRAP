@@ -36,13 +36,13 @@ void setup() {
 	leftNotifier.setToggle(leftBuzzer);
 	centerNotifier.setToggle(centerBuzzer);
 
-	manager.addNotifier(lowNotifier);
-	manager.addNotifier(leftNotifier);
+	//manager.addNotifier(lowNotifier);
+	//manager.addNotifier(leftNotifier);
 	manager.addNotifier(centerNotifier);
 }
 
 void loop() {
-	if (manager.shouldUpdate())
-		manager.updateValues();
-	Serial.println(lowSensor.getDistance());
+//	if (manager.shouldUpdate())
+//		manager.updateValues();
+	Serial.println(centerSensor.getDistance());
 }
