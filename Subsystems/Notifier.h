@@ -27,10 +27,12 @@ public:
 	Notifier& setRangeMode(double low, double high);
 	Notifier& setValueMode(double threshold);
 
+	Notifier& setSource(double& variable);
 	Notifier& setSensor(const Sensor& sensor);
 	Notifier& setToggle(Toggle& toggle, bool pulsing = false);
 	Notifier& setMaxPulseRate(double value);
 	double getMaxPulseRate() const;
+	void enableKalmanFilter(double error_Measure, double variance);
 
 
 	const Sensor& getSensor();
@@ -48,10 +50,10 @@ private:
 	double variance = .15;
 	double error_Measure = 10;
 
-	Filter kFilter;
-	double valueSensor;
+	Filter* kFilter;
+	double valueSensor = 0;
 	
-	double *value;
+	double* value;
 
 	double threshold;
 	bool checkAbove = true;
@@ -65,6 +67,7 @@ private:
 	bool sensorAvailable = false;
 	bool toggleAvailable = false;
 	bool togglePulsing = false;
+	bool kalmanFilterEnabled = false;
 	const Sensor* sensor;
 	Toggle* toggle;
 };

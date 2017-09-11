@@ -11,6 +11,8 @@
 #include "Subsystems/Notifier.h"
 #include "Subsystems/Manager.h"
 #include "Defines.h"
+const double ERROR_MEASURE = 10;
+const double VARIANCE = .15;
 
 LV_EZ1 lowSensor(lowAnalog),leftSensor(leftAnalog), centerSensor(centerAnalog);
 
@@ -23,9 +25,9 @@ Manager notifierManager, sensorManager;
 
 
 void setup() {
-	lowNotifier.checkAboveThreshold(false).setSensor(lowSensor).setToggle(lowBuzzer);
-	leftNotifier.checkAboveThreshold(false).setSensor(leftSensor).setToggle(leftBuzzer);
-	centerNotifier.checkAboveThreshold(false).setSensor(centerSensor).setToggle(centerBuzzer);
+	lowNotifier.checkAboveThreshold(false).setSensor(lowSensor).setToggle(lowBuzzer).enableKalmanFilter(ERROR_MEASURE, VARIANCE);
+	leftNotifier.checkAboveThreshold(false).setSensor(leftSensor).setToggle(leftBuzzer).enableKalmanFilter(ERROR_MEASURE, VARIANCE);
+	centerNotifier.checkAboveThreshold(false).setSensor(centerSensor).setToggle(centerBuzzer).enableKalmanFilter(ERROR_MEASURE, VARIANCE);
 
 	notifierManager.addPeriodic(lowNotifier).addPeriodic(leftNotifier).addPeriodic(centerNotifier);
 	sensorManager.addPeriodic(lowSensor).addPeriodic(leftSensor).addPeriodic(centerSensor);

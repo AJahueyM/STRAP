@@ -2,14 +2,12 @@
 
 
 
-Notifier::Notifier( double threshold, double* source = nullptr) : kFilter(error_Measure, error_Measure, variance) {
+Notifier::Notifier( double threshold, double* source = nullptr){
 	this->threshold = threshold;
 	if (source) {
 		this->value = source;
-		kFilter.setSource(value);
 	}else{
 		this->value = &valueSensor;
-		kFilter.setSource(value);
 	}
 
 }
@@ -27,7 +25,8 @@ void Notifier::run() {
 		valueSensor = sensor->get();
 	}
 
-	*value = kFilter.kalmanFilter();
+	if(kalmanFilterEnabled)
+		*value = kFilter->kalmanFilter();
 
 	switch (currentMode){
 	case thresholdMode::singleThreshold:
@@ -103,11 +102,13 @@ Notifier& Notifier::setValueMode(double threshold){
 	currentMode = thresholdMode::singleThreshold;
 	return *this;
 }
+Notifier & Notifier::setSource(double & variable){
+	value = &variable;
+}
 Notifier& Notifier::setSensor(const Sensor& sensor){
 		value = &valueSensor;
 		sensorAvailable = true;
 		this->sensor = &sensor;
-		kFilter.setSource(value);
 		return *this;
 }
 Notifier& Notifier::setToggle(Toggle& toggle, bool pulsing = false){
@@ -123,6 +124,10 @@ Notifier & Notifier::setMaxPulseRate(double value){
 double Notifier::getMaxPulseRate() const{
 	return maxPulseRateMs;
 }
+void Notifier::enableKalmanFilter(double error_Measure, double variance){
+	kFilter = new Filter(error_Measure, error_Measure, variance);
+	kalmanFilterEnabled = true;
+}
 const Sensor & Notifier::getSensor(){
 	if (sensorAvailable) {
 		return *sensor;
@@ -134,5 +139,8 @@ Toggle & Notifier::getToggle(){
 	}
 }
 Notifier::~Notifier(){
-
+	delete sensor;
+	delete toggle;
+	delete value;
+	delete kFilter;
 }
