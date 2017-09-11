@@ -3,9 +3,10 @@
 #include "Filter.h"
 #include "../Sensors/Sensor.h"
 #include "../Toggles/Toggle.h"
+#include "Periodic.h"
 #include "Arduino.h"
 
-class Notifier{
+class Notifier : public Periodic {
 public:
 	enum thresholdMode {
 		singleThreshold,
@@ -13,12 +14,8 @@ public:
 	};
 
 	Notifier(double threshold, double* source = nullptr);
-	 thresholdMode getMode();
-	/*
-		Use 'hasReachedThreshold' to know if the sensor has reached
-		the specified threshold
-	*/
-	bool hasReachedThreshold();
+	thresholdMode getMode();
+	bool getReached();
 
 	/*
 		Use to decide if Notifier returns true wheter the value read
@@ -30,17 +27,20 @@ public:
 	Notifier& setRangeMode(double low, double high);
 	Notifier& setValueMode(double threshold);
 
-	Notifier& setSensor(Sensor& sensor);
+	Notifier& setSensor(const Sensor& sensor);
 	Notifier& setToggle(Toggle& toggle, bool pulsing = false);
 	Notifier& setMaxPulseRate(double value);
 	double getMaxPulseRate() const;
 
 
-	Sensor& getSensor();
+	const Sensor& getSensor();
 	Toggle& getToggle();
 
 	~Notifier();
 private:
+	void run();
+
+	bool reached = false;
 	thresholdMode currentMode = thresholdMode::singleThreshold;
 	bool hasReachedValue();
 	bool hasReachedRange();
@@ -65,7 +65,7 @@ private:
 	bool sensorAvailable = false;
 	bool toggleAvailable = false;
 	bool togglePulsing = false;
-	Sensor* sensor;
+	const Sensor* sensor;
 	Toggle* toggle;
 };
 

@@ -2,14 +2,14 @@
 	Author: Alberto Jahuey Moncada
 	Date Created: 1/8/2017
 
-	Version: 7.21
+	Version: 7.3
 	Last Updated: 11/9/2017
 */
 
 #include "Sensors/LV_EZ1.h"
 #include "Toggles/Buzzer.h"
 #include "Subsystems/Notifier.h"
-#include "Subsystems/NotifierManager.h"
+#include "Subsystems/Manager.h"
 #include "Defines.h"
 
 LV_EZ1 lowSensor(lowAnalog),leftSensor(leftAnalog), centerSensor(centerAnalog);
@@ -19,7 +19,8 @@ Notifier	lowNotifier(cmsThresholdLow),
 			leftNotifier(cmsThresholdUpSides),
 			centerNotifier(cmsThresholdCenter);
 
-NotifierManager& manager = NotifierManager::getInstance();
+Manager notifierManager, sensorManager;
+
 
 void setup() {
 	Serial.begin(9600);
@@ -28,14 +29,13 @@ void setup() {
 	leftNotifier.checkAboveThreshold(false).setSensor(leftSensor).setToggle(leftBuzzer);
 	centerNotifier.checkAboveThreshold(false).setSensor(centerSensor).setToggle(centerBuzzer);
 
-	//manager.addNotifier(lowNotifier);
-	manager.addNotifier(leftNotifier);
-	manager.addNotifier(centerNotifier);
+	notifierManager.addPeriodic(lowNotifier).addPeriodic(leftNotifier).addPeriodic(centerNotifier);
+	sensorManager.addPeriodic(lowSensor).addPeriodic(leftSensor).addPeriodic(centerSensor);
 
 }
 
 void loop() {
-	if (manager.shouldUpdate())
-		manager.updateValues();
+	notifierManager.update();
+	sensorManager.update();
 
 }

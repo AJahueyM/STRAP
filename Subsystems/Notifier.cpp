@@ -18,7 +18,11 @@ Notifier::thresholdMode Notifier::getMode(){
 	return currentMode;
 }
 
-bool Notifier::hasReachedThreshold() {
+bool Notifier::getReached(){
+	return reached;
+}
+
+void Notifier::run() {
 	if (sensorAvailable) {
 		valueSensor = sensor->get();
 	}
@@ -27,10 +31,10 @@ bool Notifier::hasReachedThreshold() {
 
 	switch (currentMode){
 	case thresholdMode::singleThreshold:
-		return hasReachedValue();
+		reached = hasReachedValue();
 		break;
 	case thresholdMode::range:
-		return hasReachedRange();
+		reached = hasReachedRange();
 		break;
 	}
 }
@@ -99,7 +103,7 @@ Notifier& Notifier::setValueMode(double threshold){
 	currentMode = thresholdMode::singleThreshold;
 	return *this;
 }
-Notifier& Notifier::setSensor(Sensor& sensor){
+Notifier& Notifier::setSensor(const Sensor& sensor){
 		value = &valueSensor;
 		sensorAvailable = true;
 		this->sensor = &sensor;
@@ -116,11 +120,10 @@ Notifier & Notifier::setMaxPulseRate(double value){
 	maxPulseRateMs = value;
 	return *this;
 }
-double Notifier::getMaxPulseRate() const
-{
+double Notifier::getMaxPulseRate() const{
 	return maxPulseRateMs;
 }
-Sensor & Notifier::getSensor(){
+const Sensor & Notifier::getSensor(){
 	if (sensorAvailable) {
 		return *sensor;
 	}
