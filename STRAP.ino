@@ -2,8 +2,8 @@
 	Author: Alberto Jahuey Moncada
 	Date Created: 1/8/2017
 
-	Version: 7.2
-	Last Updated: 10/9/2017
+	Version: 7.21
+	Last Updated: 11/9/2017
 */
 
 #include "Sensors/LV_EZ1.h"
@@ -31,6 +31,7 @@ void setup() {
 	//manager.addNotifier(lowNotifier);
 	manager.addNotifier(leftNotifier);
 	manager.addNotifier(centerNotifier);
+
 }
 
 void loop() {
