@@ -23,8 +23,6 @@ Manager notifierManager, sensorManager;
 
 
 void setup() {
-	Serial.begin(9600);
-
 	lowNotifier.checkAboveThreshold(false).setSensor(lowSensor).setToggle(lowBuzzer);
 	leftNotifier.checkAboveThreshold(false).setSensor(leftSensor).setToggle(leftBuzzer);
 	centerNotifier.checkAboveThreshold(false).setSensor(centerSensor).setToggle(centerBuzzer);

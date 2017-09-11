@@ -15,7 +15,8 @@ void Manager::run(){
 }
 
 Manager& Manager::addPeriodic(Periodic& periodic){
-	periodics[usedPeriodics++] = &periodic;
+	if(++usedPeriodics < MAX_PERIODIC)
+		periodics[usedPeriodics] = &periodic;
 	return *this;
 }
 Manager::~Manager() {

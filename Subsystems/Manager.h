@@ -11,7 +11,7 @@ private:
 	static const int DEFAULT_UPDATE_RATE_MS = 50;
 
 	Periodic* periodics[MAX_PERIODIC];
-	int usedPeriodics;
+	int usedPeriodics = 0;
 	void updateValues();
 
 public:
