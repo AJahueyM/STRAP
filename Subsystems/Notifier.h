@@ -30,6 +30,7 @@ public:
 	Notifier& setSource(double& variable);
 	Notifier& setSensor(const Sensor& sensor);
 	Notifier& setToggle(Toggle& toggle, bool pulsing = false);
+	Notifier& setTogglePulsing(bool value);
 	Notifier& setMaxPulseRate(double value);
 	double getMaxPulseRate() const;
 	void enableKalmanFilter(double error_Measure, double variance);

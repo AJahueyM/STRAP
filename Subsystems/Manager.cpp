@@ -20,5 +20,5 @@ Manager& Manager::addPeriodic(Periodic& periodic){
 	return *this;
 }
 Manager::~Manager() {
-	delete periodics;
+	delete[] periodics;
 }

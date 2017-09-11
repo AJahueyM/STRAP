@@ -4,11 +4,11 @@
 
 Notifier::Notifier( double threshold, double* source = nullptr){
 	this->threshold = threshold;
-	if (source) {
+	if (source)
 		this->value = source;
-	}else{
+	else
 		this->value = &valueSensor;
-	}
+	
 
 }
 
@@ -116,6 +116,10 @@ Notifier& Notifier::setToggle(Toggle& toggle, bool pulsing = false){
 		togglePulsing = pulsing;
 		this->toggle = &toggle;
 		return *this;
+}
+Notifier & Notifier::setTogglePulsing(bool value){
+	togglePulsing = value;
+	return *this;
 }
 Notifier & Notifier::setMaxPulseRate(double value){
 	maxPulseRateMs = value;
