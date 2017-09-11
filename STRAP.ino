@@ -24,17 +24,9 @@ NotifierManager& manager = NotifierManager::getInstance();
 void setup() {
 	Serial.begin(9600);
 
-	lowNotifier.checkAboveThreshold(false);
-	leftNotifier.checkAboveThreshold(false);
-	centerNotifier.checkAboveThreshold(false);
-
-	lowNotifier.setSensor(lowSensor);
-	leftNotifier.setSensor(leftSensor);
-	centerNotifier.setSensor(centerSensor);
-
-	lowNotifier.setToggle(lowBuzzer);
-	leftNotifier.setToggle(leftBuzzer);
-	centerNotifier.setToggle(centerBuzzer);
+	lowNotifier.checkAboveThreshold(false).setSensor(lowSensor).setToggle(lowBuzzer);
+	leftNotifier.checkAboveThreshold(false).setSensor(leftSensor).setToggle(leftBuzzer);
+	centerNotifier.checkAboveThreshold(false).setSensor(leftSensor).setToggle(leftBuzzer);
 
 	//manager.addNotifier(lowNotifier);
 	manager.addNotifier(leftNotifier);
@@ -44,6 +36,5 @@ void setup() {
 void loop() {
 	if (manager.shouldUpdate())
 		manager.updateValues();
-	//Serial.println(centerSensor.getDistance());
-	//centerBuzzer.enablePulse(100);
+
 }

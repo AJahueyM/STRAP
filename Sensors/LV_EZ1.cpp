@@ -1,5 +1,9 @@
 #include "LV_EZ1.h"
 
+double LV_EZ1::minVal() const {
+	return 16.0;
+}
+
 LV_EZ1::LV_EZ1(double analogPin) {
 	this->analogPin = analogPin;
 	lastMillis = millis();

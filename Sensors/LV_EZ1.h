@@ -16,6 +16,7 @@ class LV_EZ1 : public DistanceSensor {
 			in = 0,
 			cms = 1
 		};
+		double minVal() const;
 		LV_EZ1(double analogPin);
 		double getDistance();
 		void setUnits(Units choice);

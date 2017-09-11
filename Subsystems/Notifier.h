@@ -24,14 +24,17 @@ public:
 		Use to decide if Notifier returns true wheter the value read
 		is higher or lower than the threshold. (Defaults to true)
 	*/
-	void checkAboveThreshold(bool choice);
-	void checkInsideRange(bool choice);
+	Notifier& checkAboveThreshold(bool choice);
+	Notifier& checkInsideRange(bool choice);
 
-	void setRangeMode(double low, double high);
-	void setValueMode(double threshold);
+	Notifier& setRangeMode(double low, double high);
+	Notifier& setValueMode(double threshold);
 
-	void setSensor(Sensor& sensor);
-	void setToggle(Toggle& toggle);
+	Notifier& setSensor(Sensor& sensor);
+	Notifier& setToggle(Toggle& toggle, bool pulsing = false);
+	Notifier& setMaxPulseRate(double value);
+	double getMaxPulseRate() const;
+
 
 	Sensor& getSensor();
 	Toggle& getToggle();
@@ -55,11 +58,13 @@ private:
 	
 	double lowThreshold;
 	double highThreshold;
+	double maxPulseRateMs = 1500;
 	bool checkInside = true;
 
 
 	bool sensorAvailable = false;
 	bool toggleAvailable = false;
+	bool togglePulsing = false;
 	Sensor* sensor;
 	Toggle* toggle;
 };

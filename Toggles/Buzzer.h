@@ -17,6 +17,7 @@ class Buzzer : public Toggle
 	void enable();
 	void disable();
 	void enablePulse(double rate);
+	double  minPulseRateMs() const;
 private:
 	double timeEnabledStart;
 	double prevMillis;

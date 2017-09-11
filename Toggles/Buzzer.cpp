@@ -33,4 +33,8 @@ void Buzzer::enablePulse(double rate){
 
 }
 
+double Buzzer::minPulseRateMs() const {
+	return 100.0;
+}
+
 

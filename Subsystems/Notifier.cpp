@@ -37,17 +37,24 @@ bool Notifier::hasReachedThreshold() {
 
 bool Notifier::hasReachedValue(){
 	if (*value > threshold && checkAbove) {
-		if (toggleAvailable)
-			toggle->enablePulse(map(*value, 16, threshold, 100, 500));
-		return true;
-	}
-	if (*value < threshold && !checkAbove) {
-		if (toggleAvailable) {
-			int cosa = map(*value, 20, threshold, 100, 1500);
-			toggle->enablePulse(cosa);
+		if (toggleAvailable && togglePulsing) {
+			int rate = map(*value, threshold, sensor->minVal(), toggle->minPulseRateMs(), maxPulseRateMs);
+			toggle->enablePulse(rate);
+		}else if (toggleAvailable) {
+			toggle->enable();
 		}
 		return true;
 	}
+	if (*value < threshold && !checkAbove) {
+		if (toggleAvailable && togglePulsing) {
+			int rate = map(*value, sensor->minVal(), threshold, toggle->minPulseRateMs(), maxPulseRateMs);
+			toggle->enablePulse(rate);
+		}else if (toggleAvailable) {
+			toggle->enable();
+		}
+		return true;
+	}
+
 	if (toggleAvailable)
 		toggle->disable();
 	return false;
@@ -72,31 +79,46 @@ bool Notifier::hasReachedRange(){
 	return false;
 }
 
-void Notifier::checkAboveThreshold(bool choice){
+Notifier& Notifier::checkAboveThreshold(bool choice){
 	checkAbove = choice;
+	return *this;
 }
-void Notifier::checkInsideRange(bool choice){
+Notifier& Notifier::checkInsideRange(bool choice){
 	checkInside = choice;
+	return *this;
 }
 
-void Notifier::setRangeMode(double low, double high){
+Notifier& Notifier::setRangeMode(double low, double high){
 	lowThreshold = low;
 	highThreshold = high;
 	currentMode = thresholdMode::range;
+	return *this;
 }
-void Notifier::setValueMode(double threshold){
+Notifier& Notifier::setValueMode(double threshold){
 	this->threshold = threshold;
 	currentMode = thresholdMode::singleThreshold;
+	return *this;
 }
-void Notifier::setSensor(Sensor& sensor){
+Notifier& Notifier::setSensor(Sensor& sensor){
 		value = &valueSensor;
 		sensorAvailable = true;
 		this->sensor = &sensor;
 		kFilter.setSource(value);
+		return *this;
 }
-void Notifier::setToggle(Toggle& toggle){
+Notifier& Notifier::setToggle(Toggle& toggle, bool pulsing = false){
 		toggleAvailable = true;
+		togglePulsing = pulsing;
 		this->toggle = &toggle;
+		return *this;
+}
+Notifier & Notifier::setMaxPulseRate(double value){
+	maxPulseRateMs = value;
+	return *this;
+}
+double Notifier::getMaxPulseRate() const
+{
+	return maxPulseRateMs;
 }
 Sensor & Notifier::getSensor(){
 	if (sensorAvailable) {
