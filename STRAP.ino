@@ -26,7 +26,7 @@ void setup() {
 
 	lowNotifier.checkAboveThreshold(false).setSensor(lowSensor).setToggle(lowBuzzer);
 	leftNotifier.checkAboveThreshold(false).setSensor(leftSensor).setToggle(leftBuzzer);
-	centerNotifier.checkAboveThreshold(false).setSensor(leftSensor).setToggle(leftBuzzer);
+	centerNotifier.checkAboveThreshold(false).setSensor(centerSensor).setToggle(centerBuzzer);
 
 	//manager.addNotifier(lowNotifier);
 	manager.addNotifier(leftNotifier);
