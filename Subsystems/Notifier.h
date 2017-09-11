@@ -3,6 +3,7 @@
 #include "Filter.h"
 #include "../Sensors/Sensor.h"
 #include "../Toggles/Toggle.h"
+#include "Arduino.h"
 
 class Notifier{
 public:
@@ -12,7 +13,7 @@ public:
 	};
 
 	Notifier(double threshold, double* source = nullptr);
-	 thresholdMode getMode() const;
+	 thresholdMode getMode();
 	/*
 		Use 'hasReachedThreshold' to know if the sensor has reached
 		the specified threshold
@@ -29,11 +30,11 @@ public:
 	void setRangeMode(double low, double high);
 	void setValueMode(double threshold);
 
-	void setSensor(const Sensor& sensor);
+	void setSensor(Sensor& sensor);
 	void setToggle(Toggle& toggle);
 
-	const Sensor& getSensor();
-	const Toggle& getToggle();
+	Sensor& getSensor();
+	Toggle& getToggle();
 
 	~Notifier();
 private:
@@ -41,11 +42,11 @@ private:
 	bool hasReachedValue();
 	bool hasReachedRange();
 
-	double variance = .35;
-	double error_Measure = 20;
+	double variance = .15;
+	double error_Measure = 10;
 
 	Filter kFilter;
-	double valueSensor = 0;
+	double valueSensor;
 	
 	double *value;
 
@@ -59,7 +60,7 @@ private:
 
 	bool sensorAvailable = false;
 	bool toggleAvailable = false;
-	const Sensor* sensor;
+	Sensor* sensor;
 	Toggle* toggle;
 };
 

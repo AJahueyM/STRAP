@@ -1,10 +1,5 @@
 #include "Toggle.h"
 
-void Toggle::enable() {
-}
-
-void Toggle::disable(){
-}
 
 bool Toggle::getState()const{
 	return state;

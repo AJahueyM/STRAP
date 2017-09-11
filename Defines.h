@@ -11,5 +11,6 @@
 #define centerBuzzerPin 6
 #define lowBuzzerPin 7
 
-#define cmsThreshold 110
-#define cmsThreshold 150
+#define cmsThresholdCenter 110
+#define cmsThresholdUpSides 100
+#define cmsThresholdLow 150

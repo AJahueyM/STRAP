@@ -2,8 +2,8 @@
 	Author: Alberto Jahuey Moncada
 	Date Created: 1/8/2017
 
-	Version: 6.9
-	Last Updated: 30/8/2017
+	Version: 7.2
+	Last Updated: 10/9/2017
 */
 
 #include "Sensors/LV_EZ1.h"
@@ -15,9 +15,9 @@
 LV_EZ1 lowSensor(lowAnalog),leftSensor(leftAnalog), centerSensor(centerAnalog);
 
 Buzzer lowBuzzer(lowBuzzerPin), leftBuzzer(leftBuzzerPin), centerBuzzer(centerBuzzerPin);
-Notifier	lowNotifier(cmsThreshold),
-			leftNotifier(cmsThreshold),
-			centerNotifier(cmsThreshold);
+Notifier	lowNotifier(cmsThresholdLow),
+			leftNotifier(cmsThresholdUpSides),
+			centerNotifier(cmsThresholdCenter);
 
 NotifierManager& manager = NotifierManager::getInstance();
 
@@ -37,12 +37,13 @@ void setup() {
 	centerNotifier.setToggle(centerBuzzer);
 
 	//manager.addNotifier(lowNotifier);
-	//manager.addNotifier(leftNotifier);
+	manager.addNotifier(leftNotifier);
 	manager.addNotifier(centerNotifier);
 }
 
 void loop() {
-//	if (manager.shouldUpdate())
-//		manager.updateValues();
-	Serial.println(centerSensor.getDistance());
+	if (manager.shouldUpdate())
+		manager.updateValues();
+	//Serial.println(centerSensor.getDistance());
+	//centerBuzzer.enablePulse(100);
 }

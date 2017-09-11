@@ -2,7 +2,7 @@
 
 
 
-double  DistanceSensor::get() const {
+double  DistanceSensor::get() {
 	return getDistance();
 }
 DistanceSensor::~DistanceSensor(){

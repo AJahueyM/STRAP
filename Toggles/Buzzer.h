@@ -16,7 +16,10 @@ class Buzzer : public Toggle
 	Buzzer(int buzzerPin);
 	void enable();
 	void disable();
+	void enablePulse(double rate);
 private:
+	double timeEnabledStart;
+	double prevMillis;
 	int buzzerPin;
 
 };

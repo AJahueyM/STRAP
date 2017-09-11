@@ -2,25 +2,29 @@
 
 
 
-Notifier::Notifier( double threshold, double* source = nullptr) : kFilter(value, error_Measure, error_Measure, variance) {
+Notifier::Notifier( double threshold, double* source = nullptr) : kFilter(error_Measure, error_Measure, variance) {
 	this->threshold = threshold;
 	if (source) {
 		this->value = source;
+		kFilter.setSource(value);
 	}else{
 		this->value = &valueSensor;
+		kFilter.setSource(value);
 	}
 
 }
 
-Notifier::thresholdMode Notifier::getMode() const{
+Notifier::thresholdMode Notifier::getMode(){
 	return currentMode;
 }
 
 bool Notifier::hasReachedThreshold() {
-	if (sensorAvailable)
+	if (sensorAvailable) {
 		valueSensor = sensor->get();
+	}
 
 	*value = kFilter.kalmanFilter();
+
 	switch (currentMode){
 	case thresholdMode::singleThreshold:
 		return hasReachedValue();
@@ -34,12 +38,14 @@ bool Notifier::hasReachedThreshold() {
 bool Notifier::hasReachedValue(){
 	if (*value > threshold && checkAbove) {
 		if (toggleAvailable)
-			toggle->enable();
+			toggle->enablePulse(map(*value, 16, threshold, 100, 500));
 		return true;
 	}
 	if (*value < threshold && !checkAbove) {
-		if (toggleAvailable)
-			toggle->enable();
+		if (toggleAvailable) {
+			int cosa = map(*value, 20, threshold, 100, 1500);
+			toggle->enablePulse(cosa);
+		}
 		return true;
 	}
 	if (toggleAvailable)
@@ -82,21 +88,22 @@ void Notifier::setValueMode(double threshold){
 	this->threshold = threshold;
 	currentMode = thresholdMode::singleThreshold;
 }
-void Notifier::setSensor(const Sensor& sensor){
+void Notifier::setSensor(Sensor& sensor){
 		value = &valueSensor;
 		sensorAvailable = true;
 		this->sensor = &sensor;
+		kFilter.setSource(value);
 }
 void Notifier::setToggle(Toggle& toggle){
 		toggleAvailable = true;
 		this->toggle = &toggle;
 }
-const Sensor & Notifier::getSensor(){
+Sensor & Notifier::getSensor(){
 	if (sensorAvailable) {
 		return *sensor;
 	}
 }
-const Toggle & Notifier::getToggle(){
+Toggle & Notifier::getToggle(){
 	if (toggleAvailable) {
 		return *toggle;
 	}

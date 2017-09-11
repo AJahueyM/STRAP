@@ -1,5 +1,5 @@
 #include "Sensor.h"
 
-double  Sensor::get() const {
+double  Sensor::get() {
 	return 0;
 }
