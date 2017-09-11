@@ -20,7 +20,13 @@ class LV_EZ1 : public DistanceSensor {
 		double getDistance();
 		void setUnits(Units choice);
 	private:
+<<<<<<< HEAD:Sensors/LV_EZ1.h
 		const int delayBetweenReadMs = 60;
+=======
+		const int delayBetweenReadMs = 49;
+		double previousReading;
+		bool shouldUpdate();
+>>>>>>> refactorNotifier:Sensors/LV_EZ1.h
 		/*
 		Allows for measurements in different systems
 		Defaults to cms.
@@ -37,6 +43,10 @@ class LV_EZ1 : public DistanceSensor {
 		that is being read and the actual measurments on cms.
 		*/
 		double conversionRateCms = 1.0 / 1.27;
+<<<<<<< HEAD:Sensors/LV_EZ1.h
+=======
+		double lastMillis;
+>>>>>>> refactorNotifier:Sensors/LV_EZ1.h
 };
 
 #endif

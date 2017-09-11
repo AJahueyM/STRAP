@@ -26,11 +26,9 @@ bool NotifierManager::shouldUpdate(){
 	return false;
 }
 
-void NotifierManager::addNotifier(Notifier* notifier){
-	if (notifier != NULL) {
-		notifiers[usedNotifiers] = notifier;
+void NotifierManager::addNotifier(Notifier& notifier){
+		notifiers[usedNotifiers] = &notifier;
 		usedNotifiers++;
-	}
 }
 
 NotifierManager::~NotifierManager() {
