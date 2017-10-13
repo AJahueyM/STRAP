@@ -18,12 +18,12 @@ class LV_EZ1 : public DistanceSensor {
 		};
 		double minVal() const;
 		LV_EZ1(double analogPin);
-		double getDistance();
+		double getDistance() const;
 		void setUnits(Units choice);
 	private:
+		void run();
+		double distance;
 		const int delayBetweenReadMs = 49;
-		double previousReading;
-		bool shouldUpdate();
 		/*
 		Allows for measurements in different systems
 		Defaults to cms.
@@ -40,7 +40,6 @@ class LV_EZ1 : public DistanceSensor {
 		that is being read and the actual measurments on cms.
 		*/
 		double conversionRateCms = 1.0 / 1.27;
-		double lastMillis;
 };
 
 #endif
