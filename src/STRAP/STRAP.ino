@@ -6,10 +6,10 @@
 	Last Updated: 11/9/2017
 */
 
-#include "Sensors/LV_EZ1.h"
-#include "Toggles/Buzzer.h"
-#include "Subsystems/Notifier.h"
-#include "Subsystems/Manager.h"
+#include "LV_EZ1.h"
+#include "Buzzer.h"
+#include "Notifier.h"
+#include "Manager.h"
 #include "Defines.h"
 const double ERROR_MEASURE = 10;
 const double VARIANCE = .15;

@@ -1,9 +1,0 @@
-#IGNORE VISUAL STUDIO FILES
-
-.vs/
-__vm/
-Debug/
-Release/
-STRAP.sln
-STRAP.vcxproj
-STRAP.vcxproj.filters

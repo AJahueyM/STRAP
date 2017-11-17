@@ -1,5 +1,6 @@
 #pragma once
-#include "../Subsystems/Periodic.h"
+#include "Periodic.h"
+#include "Arduino.h"
 class Sensor : public Periodic{
 public:
 	virtual double  minVal() const = 0;

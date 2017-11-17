@@ -2,12 +2,6 @@
 
 #ifndef _LV_EZ1_h
 #define _LV_EZ1_h
-
-#if defined(ARDUINO) && ARDUINO >= 100
-	#include "Arduino.h"
-#else
-	#include "WProgram.h"
-#endif
 #include "DistanceSensor.h"
 
 class LV_EZ1 : public DistanceSensor {
