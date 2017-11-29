@@ -6,16 +6,16 @@
 	Last Updated: 29/11/2017
 */
 
-#include "LV_EZ1.h"
-#include "Buzzer.h"
-#include "Notifier.h"
-#include "Manager.h"
+//#include "LV_EZ1.h"
+//#include "Buzzer.h"
+//#include "Notifier.h"
+//#include "Manager.h"
 #define ANALOGINS
 #include "Defines.h"
-const double ERROR_MEASURE = 10;
-const double VARIANCE = .15;
+//const double ERROR_MEASURE = 10;
+//const double VARIANCE = .15;
 
-LV_EZ1  centerSensor(centerAnalog, false), lowSensor(lowAnalog, false),leftSensor(leftAnalog, false);
+//LV_EZ1  centerSensor(centerAnalog, false), lowSensor(lowAnalog, false),leftSensor(leftAnalog, false);
 
 //Buzzer centerBuzzer(centerBuzzerPin);// lowBuzzer(lowBuzzerPin), leftBuzzer(leftBuzzerPin),
 //Notifier	//lowNotifier(cmsThresholdLow),
@@ -43,21 +43,21 @@ void setup() {
 void loop() {
 	//centerSensor.update();
 	//Serial.println(centerSensor.getDistance());
-	centerSensor.update();
-	lowSensor.update();
-	leftSensor.update();
+	//centerSensor.update();
+	//lowSensor.update();
+	//leftSensor.update();
 
-	double readingCenter = centerSensor.getDistance();
-	double readingLeft = leftSensor.getDistance();
-	double readingLow = lowSensor.getDistance();
+	double readingCenter = analogRead(centerAnalog) / 2;//centerSensor.getDistance();
+	//double readingLeft = leftSensor.getDistance();
+	//double readingLow = lowSensor.getDistance();
 
-	Serial.print("CMS ");
+	Serial.print("INCHES ");
 	Serial.print("Center= ");
 	Serial.print(readingCenter);
-	Serial.print(" Left= ");
-	Serial.print(readingLeft);
-	Serial.print(" Low= ");
-	Serial.println(readingLow);
+	//Serial.print(" Left= ");
+	//Serial.print(readingLeft);
+	//Serial.print(" Low= ");
+	//Serial.println(readingLow);
 	//notifierManager.update();
 	//sensorManager.update();
 

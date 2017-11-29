@@ -18,7 +18,7 @@ class LV_EZ1 : public DistanceSensor {
 		bool isPwmInput;
 		void run();
 		double distance;
-		const int delayBetweenReadMs = 49;
+		const int delayBetweenReadMs = 10;
 		/*
 		Allows for measurements in different systems
 		Defaults to cms.
