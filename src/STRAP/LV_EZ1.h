@@ -22,7 +22,7 @@ class LV_EZ1 : public DistanceSensor {
 		Allows for measurements in different systems
 		Defaults to cms.
 		*/
-		Units currentUnit = Units::cms;
+		Units currentUnit = cms;
 		int analogPin;
 		/*
 		This is the ratio between the analog signal
