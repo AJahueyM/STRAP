@@ -40,6 +40,7 @@ void setup() {
 }
 
 void loop() {
+	centerSensor.update();
 	Serial.println(centerSensor.getDistance());
 	//notifierManager.update();
 	//sensorManager.update();
