@@ -14,7 +14,7 @@
 const double ERROR_MEASURE = 10;
 const double VARIANCE = .15;
 
-//LV_EZ1  centerSensor(centerAnalog); //lowSensor(lowAnalog),leftSensor(leftAnalog),
+LV_EZ1  centerSensor(centerAnalog), lowSensor(lowAnalog),leftSensor(leftAnalog);
 
 //Buzzer centerBuzzer(centerBuzzerPin);// lowBuzzer(lowBuzzerPin), leftBuzzer(leftBuzzerPin),
 //Notifier	//lowNotifier(cmsThresholdLow),
@@ -42,11 +42,14 @@ void setup() {
 void loop() {
 	//centerSensor.update();
 	//Serial.println(centerSensor.getDistance());
-	double readingCenter = analogRead(centerAnalog);
-	double readingLeft = analogRead(leftAnalog);
-	double readingLow = analogRead(lowAnalog);
+	centerSensor.update();
+	leftSensor.update();
+	leftSensor.update();
+	double readingCenter = centerSensor.getDistance();
+	double readingLeft = lowSensor.getDistance();
+	double readingLow = leftSensor.getDistance();
 
-	Serial.print("RAW ");
+	Serial.print("CMS ");
 	Serial.print("Center= ");
 	Serial.print(readingCenter);
 	Serial.print(" Left= ");

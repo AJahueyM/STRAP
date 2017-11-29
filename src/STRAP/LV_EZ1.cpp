@@ -15,12 +15,13 @@ void LV_EZ1::run(){
 		switch (currentUnit) {
 		case Units::cms:
 			distance = reading / conversionRateCms;
+			break;
 		case Units::in:
 			distance = reading / conversionRateIn;
+			break;
 		default:
 			distance = -1;
 		}
-		distance = reading;
 }
 
 void LV_EZ1::setUnits(Units choice){
