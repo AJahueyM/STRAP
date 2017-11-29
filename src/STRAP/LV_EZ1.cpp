@@ -20,6 +20,7 @@ void LV_EZ1::run(){
 		default:
 			distance = -1;
 		}
+		distance = reading;
 }
 
 void LV_EZ1::setUnits(Units choice){
