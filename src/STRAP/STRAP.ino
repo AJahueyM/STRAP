@@ -14,7 +14,7 @@
 const double ERROR_MEASURE = 10;
 const double VARIANCE = .15;
 
-LV_EZ1  centerSensor(centerAnalog), lowSensor(lowAnalog),leftSensor(leftAnalog);
+LV_EZ1  centerSensor(centerAnalog, true), lowSensor(lowAnalog, true),leftSensor(leftAnalog, true);
 
 //Buzzer centerBuzzer(centerBuzzerPin);// lowBuzzer(lowBuzzerPin), leftBuzzer(leftBuzzerPin),
 //Notifier	//lowNotifier(cmsThresholdLow),
