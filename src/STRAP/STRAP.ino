@@ -42,8 +42,17 @@ void setup() {
 void loop() {
 	//centerSensor.update();
 	//Serial.println(centerSensor.getDistance());
-	double reading = analogRead(centerAnalog);
-	Serial.println(reading);
+	double readingCenter = analogRead(centerAnalog);
+	double readingLeft = analogRead(leftAnalog);
+	double readingLow = analogRead(lowAnalog);
+
+	Serial.print("RAW ");
+	Serial.print("Center= ");
+	Serial.print(readingCenter);
+	Serial.print(" Left= ");
+	Serial.print(readingLeft);
+	Serial.print(" Low= ");
+	Serial.println(readingLow);
 	//notifierManager.update();
 	//sensorManager.update();
 

@@ -5,7 +5,7 @@
 
 #define leftAnalog 0
 #define lowAnalog 1
-#define centerAnalog 2
+#define centerAnalog 3
 
 #define leftBuzzerPin 4
 #define centerBuzzerPin 6
