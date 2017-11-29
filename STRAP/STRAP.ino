@@ -10,11 +10,12 @@
 #include "Buzzer.h"
 #include "Notifier.h"
 #include "Manager.h"
+#define ANALOGINS
 #include "Defines.h"
 const double ERROR_MEASURE = 10;
 const double VARIANCE = .15;
 
-LV_EZ1  centerSensor(centerAnalog, true), lowSensor(lowAnalog, true),leftSensor(leftAnalog, true);
+LV_EZ1  centerSensor(centerAnalog, false), lowSensor(lowAnalog, false),leftSensor(leftAnalog, false);
 
 //Buzzer centerBuzzer(centerBuzzerPin);// lowBuzzer(lowBuzzerPin), leftBuzzer(leftBuzzerPin),
 //Notifier	//lowNotifier(cmsThresholdLow),
@@ -45,6 +46,7 @@ void loop() {
 	centerSensor.update();
 	lowSensor.update();
 	leftSensor.update();
+
 	double readingCenter = centerSensor.getDistance();
 	double readingLeft = leftSensor.getDistance();
 	double readingLow = lowSensor.getDistance();

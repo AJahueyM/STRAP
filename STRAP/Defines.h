@@ -13,9 +13,9 @@
 
 #else
 //PWM Inputs
-#define leftAnalog 8
-#define lowAnalog 9
-#define centerAnalog 10
+#define leftAnalog 16
+#define lowAnalog 14
+#define centerAnalog 15
 
 #endif
 
