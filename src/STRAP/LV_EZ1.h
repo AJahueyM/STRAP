@@ -11,10 +11,11 @@ class LV_EZ1 : public DistanceSensor {
 			cms = 1
 		};
 		double minVal() const;
-		LV_EZ1(double analogPin);
+		LV_EZ1(int inputPin, bool isPwmInput);
 		double getDistance() const;
 		void setUnits(Units choice);
 	private:
+		bool isPwmInput;
 		void run();
 		double distance;
 		const int delayBetweenReadMs = 49;
@@ -23,7 +24,7 @@ class LV_EZ1 : public DistanceSensor {
 		Defaults to cms.
 		*/
 		Units currentUnit = cms;
-		int analogPin;
+		int inputPin;
 		/*
 		This is the ratio between the analog signal
 		that is being read and the actual measurments on inches.
@@ -34,6 +35,9 @@ class LV_EZ1 : public DistanceSensor {
 		that is being read and the actual measurments on cms.
 		*/
 		double conversionRateCms = 1.0 / 1.27;
+		double conversionRateInPWM = 147;
+		double conversionRateCmsPWM = 57.874;
+
 };
 
 #endif
