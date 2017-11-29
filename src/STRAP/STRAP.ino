@@ -43,11 +43,11 @@ void loop() {
 	//centerSensor.update();
 	//Serial.println(centerSensor.getDistance());
 	centerSensor.update();
-	leftSensor.update();
+	lowSensor.update();
 	leftSensor.update();
 	double readingCenter = centerSensor.getDistance();
-	double readingLeft = lowSensor.getDistance();
-	double readingLow = leftSensor.getDistance();
+	double readingLeft = leftSensor.getDistance();
+	double readingLow = lowSensor.getDistance();
 
 	Serial.print("CMS ");
 	Serial.print("Center= ");
