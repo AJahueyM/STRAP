@@ -2,6 +2,9 @@
 LV_EZ1::LV_EZ1(int inputPin, bool isPwmInput = false) {
 	this->inputPin = inputPin;
 	this->isPwmInput = isPwmInput;
+	if (isPwmInput) {
+		pinMode(inputPin, INPUT);
+	}
 	Periodic::SetUpdateRate(delayBetweenReadMs);
 }
 double LV_EZ1::minVal() const {
