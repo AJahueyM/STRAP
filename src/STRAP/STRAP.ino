@@ -19,7 +19,7 @@ LV_EZ1  centerSensor(centerAnalog); //lowSensor(lowAnalog),leftSensor(leftAnalog
 //Buzzer centerBuzzer(centerBuzzerPin);// lowBuzzer(lowBuzzerPin), leftBuzzer(leftBuzzerPin),
 //Notifier	//lowNotifier(cmsThresholdLow),
 			//leftNotifier(cmsThresholdUpSides),
-			centerNotifier(cmsThresholdCenter);
+			//centerNotifier(cmsThresholdCenter);
 
 //Manager notifierManager, sensorManager;
 
