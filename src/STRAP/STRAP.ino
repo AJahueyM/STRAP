@@ -16,30 +16,32 @@ const double VARIANCE = .15;
 
 LV_EZ1  centerSensor(centerAnalog); //lowSensor(lowAnalog),leftSensor(leftAnalog),
 
-Buzzer centerBuzzer(centerBuzzerPin);// lowBuzzer(lowBuzzerPin), leftBuzzer(leftBuzzerPin),
-Notifier	//lowNotifier(cmsThresholdLow),
+//Buzzer centerBuzzer(centerBuzzerPin);// lowBuzzer(lowBuzzerPin), leftBuzzer(leftBuzzerPin),
+//Notifier	//lowNotifier(cmsThresholdLow),
 			//leftNotifier(cmsThresholdUpSides),
 			centerNotifier(cmsThresholdCenter);
 
-Manager notifierManager, sensorManager;
+//Manager notifierManager, sensorManager;
 
 
 void setup() {
+	Serial.begin(9600);
 	// lowNotifier.checkAboveThreshold(false).setSensor(lowSensor).setToggle(lowBuzzer).enableKalmanFilter(ERROR_MEASURE, VARIANCE);
 	// leftNotifier.checkAboveThreshold(false).setSensor(leftSensor).setToggle(leftBuzzer).enableKalmanFilter(ERROR_MEASURE, VARIANCE);
-	centerNotifier.checkAboveThreshold(false).setSensor(centerSensor).setToggle(centerBuzzer).enableKalmanFilter(ERROR_MEASURE, VARIANCE);
+	//centerNotifier.checkAboveThreshold(false).setSensor(centerSensor).setToggle(centerBuzzer).enableKalmanFilter(ERROR_MEASURE, VARIANCE);
 
 	// lowNotifier.setTogglePulsing(true);
 	// leftNotifier.setTogglePulsing(true);
-	centerNotifier.setTogglePulsing(true);
+	//centerNotifier.setTogglePulsing(true);
 
-	notifierManager.addPeriodic(centerNotifier);//addPeriodic(lowNotifier).addPeriodic(leftNotifier)
-	sensorManager.addPeriodic(centerSensor); //addPeriodic(lowSensor).addPeriodic(leftSensor).
+	//notifierManager.addPeriodic(centerNotifier);//addPeriodic(lowNotifier).addPeriodic(leftNotifier)
+	//sensorManager.addPeriodic(centerSensor); //addPeriodic(lowSensor).addPeriodic(leftSensor).
 
 }
 
 void loop() {
-	notifierManager.update();
-	sensorManager.update();
+	Serial.println(centerSensor.getDistance());
+	//notifierManager.update();
+	//sensorManager.update();
 
 }
