@@ -10,7 +10,7 @@ bool Periodic::update(){
 }
 
 void Periodic::SetUpdateRate(double value){
-	updateRate = value < 0 ? value = DEFAULT_UPDATE_RATE_MS : NULL;
+	updateRate = value < 0 ? value = DEFAULT_UPDATE_RATE_MS : 10;
 }
 
 double Periodic::GetUpdateRate(){

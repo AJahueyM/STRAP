@@ -36,12 +36,12 @@ class LV_EZ1 : public DistanceSensor {
 		This is the ratio between the analog signal
 		that is being read and the actual measurments on inches.
 		*/
-		double conversionRateIn = 2;
+		double conversionRateIn = .5;
 		/*
 		This is the ratio between the analog signal
 		that is being read and the actual measurments on cms.
 		*/
-		double conversionRateCms = 1.0 / 1.27;
+		double conversionRateCms = 1.27;
 		double conversionRateInPWM = 147;
 		double conversionRateCmsPWM = 57.874;
 

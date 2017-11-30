@@ -26,14 +26,14 @@ void LV_EZ1::run(){
 	switch (currentUnit) {
 		case Units::cms:
 			if (!isPwmInput) {
-				distance = reading / conversionRateCms;
+				distance = reading * conversionRateCms;
 			}else {
 				distance = reading / conversionRateCmsPWM;
 			}
 			break;
 		case Units::in:
 			if (!isPwmInput) {
-				distance = reading / conversionRateIn;
+				distance = reading * conversionRateIn;
 			}
 			else {
 				distance = reading / conversionRateInPWM;
