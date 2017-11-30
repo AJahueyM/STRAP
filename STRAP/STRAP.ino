@@ -6,7 +6,7 @@
 	Last Updated: 29/11/2017
 */
 
-//#include "LV_EZ1.h"
+#include "LV_EZ1.h"
 //#include "Buzzer.h"
 //#include "Notifier.h"
 //#include "Manager.h"
@@ -15,7 +15,7 @@
 const double ERROR_MEASURE = 10;
 const double VARIANCE = .15;
 
-LV_EZ1  centerSensor(centerAnalog, false);//, lowSensor(lowAnalog, false),leftSensor(leftAnalog, false);
+LV_EZ1  centerSensor(centerAnalog, false), lowSensor(lowAnalog, false);// , leftSensor(leftAnalog, false);
 
 //Buzzer centerBuzzer(centerBuzzerPin);// lowBuzzer(lowBuzzerPin), leftBuzzer(leftBuzzerPin),
 //Notifier	//lowNotifier(cmsThresholdLow),
@@ -28,6 +28,8 @@ LV_EZ1  centerSensor(centerAnalog, false);//, lowSensor(lowAnalog, false),leftSe
 void setup() {
 	Serial.begin(9600);
 	centerSensor.enableKalmanFilter(ERROR_MEASURE, VARIANCE);
+	lowSensor.enableKalmanFilter(ERROR_MEASURE, VARIANCE);
+
 	// lowNotifier.checkAboveThreshold(false).setSensor(lowSensor).setToggle(lowBuzzer).enableKalmanFilter(ERROR_MEASURE, VARIANCE);
 	// leftNotifier.checkAboveThreshold(false).setSensor(leftSensor).setToggle(leftBuzzer).enableKalmanFilter(ERROR_MEASURE, VARIANCE);
 	//centerNotifier.checkAboveThreshold(false).setSensor(centerSensor).setToggle(centerBuzzer).enableKalmanFilter(ERROR_MEASURE, VARIANCE);
@@ -44,16 +46,16 @@ void setup() {
 void loop() {
 	//centerSensor.update();
 	//Serial.println(centerSensor.getDistance());
-	//centerSensor.update();
-	//lowSensor.update();
+	centerSensor.update();
+	lowSensor.update();
 	//leftSensor.update();
 
-	double readingCenter = analogRead(centerAnalog) / 2;//centerSensor.getDistance();
-	double readingLow = analogRead(lowAnalog) / 2;
+	double readingCenter = centerSensor.getDistance();//analogRead(centerAnalog) / 2;//centerSensor.getDistance();
+	double readingLow = lowSensor.getDistance();//analogRead(lowAnalog) / 2;
 	//double readingLeft = leftSensor.getDistance();
 	//double readingLow = lowSensor.getDistance();
 
-	Serial.print("INCHES ");
+	Serial.print("CMs ");
 	Serial.print("Center= ");
 	Serial.print(readingCenter);
 	//Serial.print(" Left= ");
