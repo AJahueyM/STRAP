@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Filter.h"
-#include "../Sensors/Sensor.h"
-#include "../Toggles/Toggle.h"
+#include "Sensor.h"
+#include "Toggle.h"
 #include "Periodic.h"
 #include "Arduino.h"
 

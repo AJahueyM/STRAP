@@ -3,7 +3,7 @@
 
 //Main Program
 
-#define leftAnalog 0
+#define topAnalog 0
 #define lowAnalog 1
 #define centerAnalog 2
 

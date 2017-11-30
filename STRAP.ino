@@ -6,40 +6,44 @@
 	Last Updated: 11/9/2017
 */
 
-#include "Sensors/LV_EZ1.h"
-#include "Toggles/Buzzer.h"
-#include "Subsystems/Notifier.h"
-#include "Subsystems/Manager.h"
+#include "LV_EZ1.h"
+#include "Buzzer.h"
+#include "Notifier.h"
+#include "Manager.h"
 #include "Defines.h"
 const double ERROR_MEASURE = 10;
 const double VARIANCE = .15;
 
-LV_EZ1 lowSensor(lowAnalog),leftSensor(leftAnalog), centerSensor(centerAnalog);
+LV_EZ1 lowSensor(lowAnalog),topSensor(topAnalog), centerSensor(centerAnalog);
 
-Buzzer lowBuzzer(lowBuzzerPin), leftBuzzer(leftBuzzerPin), centerBuzzer(centerBuzzerPin);
-Notifier	lowNotifier(cmsThresholdLow),
-			leftNotifier(cmsThresholdUpSides),
-			centerNotifier(cmsThresholdCenter);
+//Buzzer lowBuzzer(lowBuzzerPin), leftBuzzer(leftBuzzerPin), centerBuzzer(centerBuzzerPin);
+//Notifier	lowNotifier(cmsThresholdLow),
+//			leftNotifier(cmsThresholdUpSides),
+//			centerNotifier(cmsThresholdCenter);
 
-Manager notifierManager, sensorManager;
+//Manager notifierManager, sensorManager;
 
 
 void setup() {
-	lowNotifier.checkAboveThreshold(false).setSensor(lowSensor).setToggle(lowBuzzer).enableKalmanFilter(ERROR_MEASURE, VARIANCE);
-	leftNotifier.checkAboveThreshold(false).setSensor(leftSensor).setToggle(leftBuzzer).enableKalmanFilter(ERROR_MEASURE, VARIANCE);
-	centerNotifier.checkAboveThreshold(false).setSensor(centerSensor).setToggle(centerBuzzer).enableKalmanFilter(ERROR_MEASURE, VARIANCE);
+	Serial.begin(9600);
+//	lowNotifier.checkAboveThreshold(false).setSensor(lowSensor).setToggle(lowBuzzer).enableKalmanFilter(ERROR_MEASURE, VARIANCE);
+//	leftNotifier.checkAboveThreshold(false).setSensor(leftSensor).setToggle(leftBuzzer).enableKalmanFilter(ERROR_MEASURE, VARIANCE);
+//	centerNotifier.checkAboveThreshold(false).setSensor(centerSensor).setToggle(centerBuzzer).enableKalmanFilter(ERROR_MEASURE, VARIANCE);
 
-	lowNotifier.setTogglePulsing(true);
-	leftNotifier.setTogglePulsing(true);
-	centerNotifier.setTogglePulsing(true);
+//	lowNotifier.setTogglePulsing(true);
+//	leftNotifier.setTogglePulsing(true);
+//	centerNotifier.setTogglePulsing(true);
 
-	notifierManager.addPeriodic(lowNotifier).addPeriodic(leftNotifier).addPeriodic(centerNotifier);
-	sensorManager.addPeriodic(lowSensor).addPeriodic(leftSensor).addPeriodic(centerSensor);
+//	notifierManager.addPeriodic(lowNotifier).addPeriodic(leftNotifier).addPeriodic(centerNotifier);
+//	sensorManager.addPeriodic(lowSensor).addPeriodic(leftSensor).addPeriodic(centerSensor);
 
 }
 
 void loop() {
-	notifierManager.update();
-	sensorManager.update();
+	centerSensor.update();
+	Serial.print("CENTER CMS= ");
+	Serial.println(centerSensor.getDistance());
+	//notifierManager.update();
+	//sensorManager.update();
 
 }
