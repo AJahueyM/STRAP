@@ -12,8 +12,8 @@
 //#include "Manager.h"
 #define ANALOGINS
 #include "Defines.h"
-//const double ERROR_MEASURE = 10;
-//const double VARIANCE = .15;
+const double ERROR_MEASURE = 10;
+const double VARIANCE = .15;
 
 LV_EZ1  centerSensor(centerAnalog, false);//, lowSensor(lowAnalog, false),leftSensor(leftAnalog, false);
 
@@ -27,6 +27,7 @@ LV_EZ1  centerSensor(centerAnalog, false);//, lowSensor(lowAnalog, false),leftSe
 
 void setup() {
 	Serial.begin(9600);
+	centerSensor.enableKalmanFilter(ERROR_MEASURE, VARIANCE);
 	// lowNotifier.checkAboveThreshold(false).setSensor(lowSensor).setToggle(lowBuzzer).enableKalmanFilter(ERROR_MEASURE, VARIANCE);
 	// leftNotifier.checkAboveThreshold(false).setSensor(leftSensor).setToggle(leftBuzzer).enableKalmanFilter(ERROR_MEASURE, VARIANCE);
 	//centerNotifier.checkAboveThreshold(false).setSensor(centerSensor).setToggle(centerBuzzer).enableKalmanFilter(ERROR_MEASURE, VARIANCE);
