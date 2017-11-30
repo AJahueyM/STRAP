@@ -48,6 +48,7 @@ void loop() {
 	//leftSensor.update();
 
 	double readingCenter = analogRead(centerAnalog) / 2;//centerSensor.getDistance();
+	double readingLow = analogRead(lowAnalog) / 2;
 	//double readingLeft = leftSensor.getDistance();
 	//double readingLow = lowSensor.getDistance();
 
@@ -56,8 +57,8 @@ void loop() {
 	Serial.print(readingCenter);
 	//Serial.print(" Left= ");
 	//Serial.print(readingLeft);
-	//Serial.print(" Low= ");
-	//Serial.println(readingLow);
+	Serial.print(" Low= ");
+	Serial.println(readingLow);
 	//notifierManager.update();
 	//sensorManager.update();
 
