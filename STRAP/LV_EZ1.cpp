@@ -15,12 +15,14 @@ double LV_EZ1::getDistance() const{
 	return distance;
 }
 void LV_EZ1::run(){
-	double reading;
 	if (!isPwmInput) {
 		reading = analogRead(inputPin);
 	}else{
 		reading = pulseIn(inputPin, HIGH);
 	}
+	if(kalmanFilterEnabled)
+		reading = kFilter->kalmanFilter();
+
 	switch (currentUnit) {
 		case Units::cms:
 			if (!isPwmInput) {
@@ -42,7 +44,11 @@ void LV_EZ1::run(){
 			break;
 		}
 }
-
+void LV_EZ1::enableKalmanFilter(double error_Measure, double variance){
+	kFilter = new Filter(error_Measure, error_Measure, variance);
+	kFilter->setSource(&reading);
+	kalmanFilterEnabled = true;
+}
 void LV_EZ1::setUnits(Units choice){
 	currentUnit = choice;
 }

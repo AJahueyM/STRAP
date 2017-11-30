@@ -3,6 +3,8 @@
 #ifndef _LV_EZ1_h
 #define _LV_EZ1_h
 #include "DistanceSensor.h"
+#include "Filter.h"
+#include "LV_EZ1.h"
 
 class LV_EZ1 : public DistanceSensor {
 	public:
@@ -14,10 +16,15 @@ class LV_EZ1 : public DistanceSensor {
 		LV_EZ1(int inputPin, bool isPwmInput);
 		double getDistance() const;
 		void setUnits(Units choice);
+		void enableKalmanFilter(double error_Measure, double variance);
+
 	private:
+		Filter* kFilter;
+		bool kalmanFilterEnabled = false;
+
 		bool isPwmInput;
 		void run();
-		double distance;
+		double distance, reading;
 		const int delayBetweenReadMs = 10;
 		/*
 		Allows for measurements in different systems
